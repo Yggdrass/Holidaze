@@ -11,7 +11,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
 a {
@@ -26,8 +25,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  min-width: 100vw;
   min-height: 100vh;
 }
 
@@ -38,21 +36,47 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  border: 2px solid var(--white);
+  color: var(--white);
+  text-transform: uppercase;
+  padding: 0.4em 0.8em;
   font-size: 1em;
-  font-weight: 500;
+  font-weight: bold;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
+
+.button_green {
+  background-color: var(--green);
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+.button_purple {
+  background-color: var(--purple);
+}
+
+.button_purple:hover,
+.button_green:hover {
+  background-color: var(--white);
+}
+
+.button_purple:hover {
+  color: var(--purple);
+  border: 2px solid var(--purple);
+}
+
+.button_green:hover {
+  color: var(--green);
+  border: 2px solid var(--green);
+}
+
+.footer_icons {
+  font-size: 3rem;
+  color: var(--pink);
+}
+.social_media_icons {
+  display: flex;
+  gap: 2rem;
 }
 
 @media (prefers-color-scheme: light) {
