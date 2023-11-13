@@ -1,21 +1,52 @@
 import "./Navigation.css";
+import { motion } from "framer-motion";
 
-const NavLinks = () => {
+const NavLinks = (props) => {
+  const animtateFrom = { opacity: 0, y: -40 };
+  const animtateTo = { opacity: 1, y: 0 };
+
   return (
     <ul>
-      <li>
+      <motion.li
+        initial={animtateFrom}
+        animate={animtateTo}
+        transition={{ delay: 0.05 }}
+        onClick={() => props.isMobile && props.closeMobileMenu()}
+      >
         <a href="/">home</a>
-      </li>
-      <li>
+      </motion.li>
+      <motion.li
+        initial={animtateFrom}
+        animate={animtateTo}
+        transition={{ delay: 0.1 }}
+        onClick={() => props.isMobile && props.closeMobileMenu()}
+      >
         <a href="/venues">venues</a>
-      </li>
-      <li>
+      </motion.li>
+      <motion.li
+        initial={animtateFrom}
+        animate={animtateTo}
+        transition={{ delay: 0.15 }}
+        onClick={() => props.isMobile && props.closeMobileMenu()}
+      >
         <a href="/profile">profile</a>
-      </li>
-      <li>
+      </motion.li>
+      <motion.li
+        initial={animtateFrom}
+        animate={animtateTo}
+        transition={{ delay: 0.2 }}
+        onClick={() => props.isMobile && props.closeMobileMenu()}
+      >
         <a href="/calendar">calendar</a>
-      </li>
-      <button className="button_purple">logout</button>
+      </motion.li>
+      <motion.button
+        initial={animtateFrom}
+        animate={animtateTo}
+        transition={{ delay: 0.25 }}
+        className="button_purple"
+      >
+        logout
+      </motion.button>
     </ul>
   );
 };
