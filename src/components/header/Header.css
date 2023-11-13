@@ -1,0 +1,14 @@
+header {
+  margin: 0;
+  padding: 0;
+  background-color: var(--black);
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.NavBarLogo {
+  max-width: 75px;
+  vertical-align: middle;
+  padding-left: 5%;
+}

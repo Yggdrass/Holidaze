@@ -13,3 +13,10 @@ footer {
 p {
   font-size: 1rem;
 }
+
+@media (max-width: 990px) {
+  footer {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}

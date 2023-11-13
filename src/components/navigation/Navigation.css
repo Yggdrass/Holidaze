@@ -1,0 +1,68 @@
+@import "../../App.css";
+
+ul li {
+  text-transform: uppercase;
+  list-style: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li a {
+  color: var(--pink);
+}
+
+nav ul {
+  display: flex;
+  gap: 5rem;
+  font-size: 1.2rem;
+  right: 5%;
+  align-items: center;
+}
+
+header .Navigation {
+  padding-right: 5%;
+}
+
+header .MobileNavigation {
+  display: none;
+}
+
+.Navigation {
+  display: flex;
+  align-items: center;
+  right: 5%;
+}
+
+.Hamburger {
+  color: var(--pink);
+  font-size: 2rem;
+  position: absolute;
+  right: 5%;
+  cursor: pointer;
+}
+
+@media (max-width: 990px) {
+  header .Navigation {
+    display: none;
+  }
+
+  header .MobileNavigation {
+    display: flex;
+    align-items: center;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    top: 74px;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--black);
+    padding: 0;
+  }
+}

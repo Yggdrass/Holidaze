@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Footer.module.css";
+import "./Footer.css";
 import {
   faSquareFacebook,
   faInstagram,

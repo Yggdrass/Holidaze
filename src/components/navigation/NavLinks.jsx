@@ -1,4 +1,4 @@
-import "./Navigation.module.css";
+import "./Navigation.css";
 
 const NavLinks = () => {
   return (
