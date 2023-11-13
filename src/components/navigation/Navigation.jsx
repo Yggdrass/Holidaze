@@ -1,9 +1,9 @@
 import NavLinks from "./NavLinks";
+import "./Navigation.css";
 
 const Navigation = () => {
   return (
-    <nav>
-      <img src="../../../public/assets/holidaze_logo_black.png" alt="Logo" />
+    <nav className="Navigation">
       <NavLinks />
     </nav>
   );
