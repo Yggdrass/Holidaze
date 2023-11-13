@@ -5,10 +5,19 @@ header {
   width: 100vw;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 100px;
 }
 
 .NavBarLogo {
-  max-width: 75px;
+  max-width: 5%;
   vertical-align: middle;
-  padding-left: 5%;
+  padding-left: 5rem;
+}
+
+@media (max-width: 667px) {
+  .NavBarLogo {
+    max-width: 80px;
+    padding-left: 1.5rem;
+  }
 }

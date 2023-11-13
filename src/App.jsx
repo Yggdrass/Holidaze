@@ -1,14 +1,15 @@
 import "./App.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
+import Home from "./pages/home/Home";
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
-      <img src="./assets/holidaze_logo_transparent_whitegems.png" alt="" />
+      <Home />
       <Footer />
-    </div>
+    </>
   );
 }
 

@@ -1,0 +1,92 @@
+@import "../../App.css";
+
+main {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../../../public/assets/backgroundHome.png");
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3rem;
+}
+
+h1 {
+  margin-top: 3rem;
+  font-size: 8rem;
+  color: var(--black);
+  background-color: var(--white);
+}
+
+.button_green {
+  font-size: 3rem;
+}
+
+.button_purple {
+  font-size: 1.2rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 10rem;
+  justify-content: center;
+  flex-direction: row;
+}
+
+@media (max-width: 1024px) {
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+    gap: 8rem;
+  }
+}
+
+@media (max-width: 667px) {
+  h1 {
+    font-size: 4rem;
+  }
+
+  main {
+    padding-bottom: 20rem;
+  }
+}
+
+/*
+@media (max-width: 1400px), (orientation: landscape) {
+  .buttons {
+    margin: 2rem;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  h1 {
+    margin-top: 2rem;
+    font-size: 4rem;
+  }
+
+  .buttons {
+    margin: 0.5rem;
+  }
+
+  .button_green,
+  .button_purple {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 400px), (orientation: portrait) {
+  .buttons {
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 700px), (orientation: landscape) {
+  h1 {
+    font-size: 4rem;
+  }
+}
+*/

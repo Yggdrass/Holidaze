@@ -1,12 +1,11 @@
 footer img {
   max-width: 100px;
-  vertical-align: middle;
 }
 
 footer {
   display: flex;
   justify-content: space-between;
-  margin: 0 5%;
+  margin: 2rem 3rem;
   align-items: center;
 }
 
@@ -14,9 +13,30 @@ p {
   font-size: 1rem;
 }
 
+@media (max-width: 1024px) {
+  footer {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 667px) {
+  footer {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
+/*
 @media (max-width: 990px) {
   footer {
     flex-direction: column;
     gap: 3rem;
   }
 }
+
+@media (max-width: 990px), (orientation: landscape) {
+  footer {
+    padding-top: 3rem;
+  }
+}
+*/
