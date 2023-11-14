@@ -1,0 +1,33 @@
+@import "../../../App.css";
+
+input {
+  display: flex;
+  justify-content: left;
+}
+
+label {
+  font-weight: bold;
+}
+
+.label-icon {
+  color: var(--purple);
+  font-size: 2rem;
+}
+
+.input-div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.label-div {
+  display: inherit;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
