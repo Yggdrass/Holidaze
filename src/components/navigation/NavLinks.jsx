@@ -1,9 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import "./Navigation.css";
 import { motion } from "framer-motion";
 
 const NavLinks = (props) => {
+  const navigate = useNavigate();
+
   const animtateFrom = { opacity: 0, y: -40 };
   const animtateTo = { opacity: 1, y: 0 };
+
+  const handleLogout = () => {
+    localStorage.removeItem("Holidaze_Login_Token");
+    navigate(`/`);
+    window.location.reload(true);
+  };
 
   return (
     <ul>
@@ -44,6 +53,7 @@ const NavLinks = (props) => {
         animate={animtateTo}
         transition={{ delay: 0.25 }}
         className="button_purple"
+        onClick={handleLogout}
       >
         logout
       </motion.button>

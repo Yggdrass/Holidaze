@@ -1,16 +1,24 @@
+import { useEffect, useState } from "react";
+import LoginModal from "../../components/auth/LoginModal";
+import RegisterModal from "../../components/auth/RegisterModal";
 import "./Home.css";
+import MainLoggedIn from "../../components/main/MainLoggedIn";
+import MainLoggedOut from "../../components/main/MainLoggedOut";
 
 const Home = () => {
-  return (
-    <main>
-      <h1>HOLIDAZE</h1>
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  console.log(isLoggedIn);
 
-      <div className="buttons">
-        <button className="button_green">login</button>
-        <button className="button_green">register</button>
-      </div>
-    </main>
-  );
+  const accessToken = localStorage.getItem("Holidaze_Login_Token");
+  console.log(accessToken);
+
+  useEffect(() => {
+    if (accessToken) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  return <>{isLoggedIn ? <MainLoggedIn /> : <MainLoggedOut />}</>;
 };
 
 export default Home;
