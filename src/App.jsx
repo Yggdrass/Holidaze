@@ -3,18 +3,20 @@ import "./App.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
+import Venues from "./pages/venues/Venues";
 
 function App() {
   return (
-    <>
+    <div>
       <HashRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/venues" element={<Venues />} />
         </Routes>
         <Footer />
       </HashRouter>
-    </>
+    </div>
   );
 }
 

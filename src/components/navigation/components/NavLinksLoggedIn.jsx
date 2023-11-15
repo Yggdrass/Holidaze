@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavLinksLoggedIn = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const NavLinksLoggedIn = () => {
         transition={{ delay: 0.05 }}
         onClick={() => props.isMobile && props.closeMobileMenu()}
       >
-        <a href="/">home</a>
+        <Link to="/">home</Link>
       </motion.li>
       <motion.li
         initial={animtateFrom}
@@ -28,7 +28,7 @@ const NavLinksLoggedIn = () => {
         transition={{ delay: 0.1 }}
         onClick={() => props.isMobile && props.closeMobileMenu()}
       >
-        <a href="/venues">venues</a>
+        <Link to="/venues">venues</Link>
       </motion.li>
       <motion.li
         initial={animtateFrom}
@@ -36,7 +36,7 @@ const NavLinksLoggedIn = () => {
         transition={{ delay: 0.15 }}
         onClick={() => props.isMobile && props.closeMobileMenu()}
       >
-        <a href="/profile">profile</a>
+        <Link to="/profile">profile</Link>
       </motion.li>
       <motion.li
         initial={animtateFrom}
@@ -44,7 +44,7 @@ const NavLinksLoggedIn = () => {
         transition={{ delay: 0.2 }}
         onClick={() => props.isMobile && props.closeMobileMenu()}
       >
-        <a href="/calendar">calendar</a>
+        <Link to="/calendar">calendar</Link>
       </motion.li>
       <motion.button
         initial={animtateFrom}
