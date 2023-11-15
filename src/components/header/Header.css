@@ -6,7 +6,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  height: 75px;
 }
 
 .NavBarLogo {
@@ -17,7 +17,14 @@ header {
 
 @media (max-width: 667px) {
   .NavBarLogo {
-    max-width: 80px;
+    max-width: 75px;
+    padding-left: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .NavBarLogo {
+    max-width: 65px;
     padding-left: 1.5rem;
   }
 }

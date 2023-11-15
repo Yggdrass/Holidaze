@@ -16,15 +16,18 @@ const RegisterModal = () => {
 
   return (
     <div>
-      <button className="button_green btn_modal" onClick={toggleRegisterModal}>
+      <button
+        className="button_green btn_modal register_button_home"
+        onClick={toggleRegisterModal}
+      >
         register
       </button>
 
       {registerModal && (
-        <div className="modal">
+        <div className="modal ">
           <div className="overlay" onClick={toggleRegisterModal}></div>
           <div className="modal-content">
-            <h1>register</h1>
+            <h1 className="h1_modal_title">register</h1>
             <RegisterForm />
           </div>
         </div>

@@ -16,7 +16,10 @@ const LoginModal = () => {
 
   return (
     <div>
-      <button className="button_green btn_modal" onClick={toggleLoginModal}>
+      <button
+        className="button_green btn_modal login_button_home"
+        onClick={toggleLoginModal}
+      >
         login
       </button>
 
@@ -24,7 +27,7 @@ const LoginModal = () => {
         <div className="modal">
           <div className="overlay" onClick={toggleLoginModal}></div>
           <div className="modal-content">
-            <h1>login</h1>
+            <h1 className="h1_modal_title">login</h1>
             <LoginForm />
           </div>
         </div>
