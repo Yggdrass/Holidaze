@@ -23,13 +23,18 @@ h1 {
   position: fixed;
 }
 
+.modal {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
 .overlay {
   background: var(--pink_overlay);
 }
 
 .modal-content {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   text-transform: uppercase;
   transform: translate(-50%, -50%);
@@ -40,4 +45,20 @@ h1 {
   border: 20px var(--purple);
   max-width: 600px;
   min-width: 300px;
+}
+
+.h1_modal_title {
+  font-size: 4rem;
+}
+
+@media (max-width: 667px), (orientation: landscape) {
+  .modal-content {
+    top: 75%;
+  }
+}
+
+@media (max-width: 380px), (orientation: landscape) {
+  .modal-content {
+    top: 55%;
+  }
 }

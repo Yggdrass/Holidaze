@@ -140,8 +140,8 @@ const RegisterForm = () => {
           />
         </div>
 
-        <button type="submit" className="button_green">
-          submit form
+        <button type="submit" className="button_green register_form_submit">
+          register
         </button>
       </form>
     </div>

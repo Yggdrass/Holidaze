@@ -8,7 +8,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="fixed-bottom">
       <img
         src="../../../public/assets/holidaze_logo_transparent_whitegems.png"
         alt=""
