@@ -1,0 +1,81 @@
+@import "../../App.css";
+
+.venue_details_main {
+  display: flex;
+  flex-direction: column;
+  background-image: url("../../../public/assets/main_loggedIn_background.png");
+  height: 100vh;
+  width: 100vw;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3rem;
+}
+
+.info_group_1 {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  gap: 6rem;
+}
+
+.venue_stars,
+.venue_price,
+.venue_maxGuests {
+  display: inherit;
+  gap: 1.5rem;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: italic;
+  text-transform: uppercase;
+}
+
+.venue_details_card {
+  background-color: var(--white);
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.venue_infoGroup1_icon,
+.venue_meta_icon {
+  color: var(--purple);
+  font-size: 2.5rem;
+}
+
+.venue_media_description {
+  display: flex;
+  gap: 3rem;
+  margin: 2rem auto 2rem auto;
+}
+
+.venue_media_image,
+.venue_description {
+  max-width: 50%;
+}
+
+.venue_description {
+  font-size: 4rem;
+}
+
+.venue_meta {
+  display: flex;
+  justify-content: space-around;
+}
+
+.venue_facilities,
+.venue_location {
+  width: 25%;
+  font-size: 3rem;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.venue_facility {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 2rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+}

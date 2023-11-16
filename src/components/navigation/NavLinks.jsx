@@ -5,16 +5,16 @@ import NavLinksLoggedOut from "./components/NavLinksLoggedOut";
 
 const NavLinks = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  console.log(isLoggedIn);
 
   const accessToken = localStorage.getItem("Holidaze_Login_Token");
-  console.log(accessToken);
+  //console.log("accessToken: ", accessToken);
 
   useEffect(() => {
     if (accessToken) {
       setIsLoggedIn(true);
     }
   }, []);
+  //console.log("isLoggedIn: ", isLoggedIn);
 
   return <>{isLoggedIn ? <NavLinksLoggedIn /> : <NavLinksLoggedOut />}</>;
 };

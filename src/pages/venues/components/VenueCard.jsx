@@ -1,10 +1,11 @@
-import { Carousel } from "bootstrap";
 import "../Venues.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBill1 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const VenueCard = ({ item }) => {
+  //console.log("item.id: ", item.id);
+
   return (
     <div className="venue_card">
       <h2 className="venue_card_title">{item.name}</h2>
@@ -18,7 +19,7 @@ const VenueCard = ({ item }) => {
 
       <p className="venue_card_description">{item.description}</p>
 
-      <Link to={`venue/${item.id}`} className="venue_card_link">
+      <Link to={`${item.id}`} className="venue_card_link">
         Click to view
       </Link>
     </div>
