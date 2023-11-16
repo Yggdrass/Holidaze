@@ -13,12 +13,12 @@ const Venues = () => {
     fetch(AllVenuesUrl).then((res) =>
       res.json().then((json) => {
         setVenues(json);
-        console.log("setVenues:", json);
+        //console.log("setVenues:", json);
       })
     );
   }, []);
 
-  console.log("Venues Set:", venues);
+  //console.log("Venues Set:", venues);
 
   return (
     <main className="main_venues">
