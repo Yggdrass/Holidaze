@@ -15,28 +15,23 @@ import {
   faUsers,
   faWifi,
 } from "@fortawesome/free-solid-svg-icons";
+import "./VenueDetails.css";
 
 const VenueDetails = () => {
   const VenueUrl = Venues_Details_Url;
-  console.log("VenueUrl: ", VenueUrl);
   const [venue, setVenue] = useState("");
-  console.log("Venue: ", venue);
   const params = useParams();
-  console.log("Params: ", params);
-  console.log("Params ID: ", params.id);
-  const FetchNewVenueDetails = VenueUrl + params.id;
-  console.log("FetchNewVenueDetails: ", FetchNewVenueDetails);
-
-  //console.log("Wifi: ", venue.meta.wifi);
 
   useEffect(() => {
-    fetch(FetchNewVenueDetails)
+    fetch(`${VenueUrl}/${params.id}`)
       .then((res) => res.json())
       .then((json) => {
         setVenue(json);
         console.log("Json", json);
       });
-  }, [FetchNewVenueDetails]);
+  }, [VenueUrl, params.id]);
+
+  console.log("Venue", venue);
 
   return (
     <main className="venue_details_main">
@@ -77,15 +72,19 @@ const VenueDetails = () => {
             <h3>facilities</h3>
             <p className="venue_facility">
               <FontAwesomeIcon icon={faWifi} className="venue_meta_icon" />
+              wifi {venue.meta.wifi ? "included" : "not included"}
             </p>
             <p className="venue_facility">
               <FontAwesomeIcon icon={faCar} className="venue_meta_icon" />
+              parking {venue.meta.parking ? "included" : "not included"}
             </p>
             <p className="venue_facility">
               <FontAwesomeIcon icon={faCutlery} className="venue_meta_icon" />
+              breakfast {venue.meta.breakfast ? "included" : "not included"}
             </p>
             <p className="venue_facility">
               <FontAwesomeIcon icon={faPaw} className="venue_meta_icon" />
+              pets {venue.meta.pets ? "included" : "not included"}
             </p>
           </div>
 
@@ -93,12 +92,15 @@ const VenueDetails = () => {
             <h3>location</h3>
             <p className="venue_facility">
               <FontAwesomeIcon icon={faHouse} className="venue_meta_icon" />
+              {venue.location.address}
             </p>
             <p className="venue_facility">
               <FontAwesomeIcon icon={faCity} className="venue_meta_icon" />
+              {venue.location.city}
             </p>
             <p className="venue_facility">
               <FontAwesomeIcon icon={faGlobe} className="venue_meta_icon" />
+              {venue.location.country}
             </p>
           </div>
         </div>
