@@ -9,6 +9,7 @@ const NavLinksLoggedIn = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("Holidaze_Login_Token");
+    localStorage.removeItem("profile");
     navigate(`/`);
     window.location.reload(true);
   };

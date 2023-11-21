@@ -1,0 +1,11 @@
+@import "../../App.css";
+
+.main_profilePage {
+  background-image: url("../../../public/assets/main_loggedIn_background.png");
+  height: 100%;
+  width: 100vw;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3rem;
+}

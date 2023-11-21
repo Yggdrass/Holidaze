@@ -38,7 +38,7 @@ const RegisterForm = () => {
         console.log("Response :", response);
 
         const result = await response.json();
-        console.log("Result :", result);
+        console.log("Result :", JSON.stringify(result));
 
         if (response.ok) {
           alert(
