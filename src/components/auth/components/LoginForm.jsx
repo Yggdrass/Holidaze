@@ -5,6 +5,7 @@ import "./Form.css";
 import { useState } from "react";
 import { LoginUrl } from "../constants/Url";
 import { useNavigate } from "react-router-dom";
+import { save } from "../../storage/save";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -28,15 +29,15 @@ const LoginForm = () => {
 
       try {
         const response = await fetch(loginUrl, postData);
-        console.log("Response :", response);
+        //console.log("Response :", response);
 
         const result = await response.json();
-        console.log("Result :", result);
+        //console.log("Result :", result);
 
         const accessToken = result.accessToken;
-        console.log("AccessToken :", accessToken);
+        //console.log("AccessToken :", accessToken);
 
-        localStorage.setItem("Holidaze_Login_Token", accessToken);
+        save("Holidaze_Login_Token", accessToken);
         console.log(
           "Stored Token LocalStorage :",
           localStorage.getItem("Holidaze_Login_Token")
@@ -44,6 +45,7 @@ const LoginForm = () => {
 
         if (response.ok) {
           alert(`${result.name} You have successfully logged in!`);
+          save("profile", result);
           navigate(`/`);
           window.location.reload(true);
         } else {

@@ -5,6 +5,7 @@ import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
 import Venues from "./pages/venues/Venues";
 import VenueDetails from "./pages/venueDetails/VenueDetails";
+import ProfilePage from "./pages/profile/ProfilePage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/venues" element={<Venues />} />
           <Route path="/venues/:id" element={<VenueDetails />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
         <Footer />
       </HashRouter>
