@@ -12,6 +12,7 @@ import {
   faMoneyBill1,
   faPaw,
   faStar,
+  faUserTie,
   faUsers,
   faWifi,
 } from "@fortawesome/free-solid-svg-icons";
@@ -24,10 +25,14 @@ const VenueDetails = () => {
   const params = useParams();
   console.log("Params: ", params);
   console.log("Params ID: ", params.id);
-  const FetchNewVenueDetails = VenueUrl + params.id;
+  const FetchNewVenueDetails =
+    VenueUrl + params.id + "?_owner=true&_bookings=true";
   console.log("FetchNewVenueDetails: ", FetchNewVenueDetails);
 
   //console.log("Wifi: ", venue.meta.wifi);
+
+  const venueOwnerName = venue.owner.name;
+  console.log("Venue Owner:", venueOwnerName);
 
   useEffect(() => {
     fetch(FetchNewVenueDetails)
@@ -60,10 +65,10 @@ const VenueDetails = () => {
           </p>
           <p className="venue_maxGuests">
             <FontAwesomeIcon
-              icon={faCalendar}
+              icon={faUserTie}
               className="venue_infoGroup1_icon"
             />
-            from: {venue.dateFrom} / to: {venue.dateTo}
+            created by: {venueOwnerName}
           </p>
         </div>
 

@@ -26,12 +26,6 @@ const ProfilePage = () => {
   const venueManager = profile.venueManager;
   //console.log("Venue Manager Role:", venueManager);
 
-  const fetchProfileUrl = url + profileName;
-  //console.log("fetchProfileUrl:", fetchProfileUrl);
-
-  const AuthToken = profile.accessToken;
-  //console.log("Authenticate Token: ", AuthToken);
-
   const Heading = () => {
     return <h1>{profileName}'s page</h1>;
   };
