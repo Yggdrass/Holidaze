@@ -7,6 +7,7 @@ import { faEnvelope, faUser } from "@fortawesome/free-regular-svg-icons";
 import UpdateAvatarModal from "./components/UpdateAvatarModal";
 import UpdateVenueManagerModal from "./components/UpdateVenueManagerModal";
 import CreateVenueModal from "./components/CreateVenueModal";
+import VenuesByProfile from "./components/VenuesByProfile";
 
 const ProfilePage = () => {
   const url = ProfilesUrl;
@@ -63,6 +64,9 @@ const ProfilePage = () => {
       <div>{venueManager ? <CreateVenueModal /> : null}</div>
       <UpdateAvatarModal />
       <UpdateVenueManagerModal />
+      <div>
+        <VenuesByProfile />
+      </div>
     </main>
   );
 };

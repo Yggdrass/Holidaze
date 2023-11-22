@@ -23,7 +23,7 @@ const VenueBookingCard = ({ item }) => {
         </p>
       </div>
 
-      <Link to={`${item.id}`} className="venue_card_link">
+      <Link to={`/bookings/${item.id}`} className="venue_card_link">
         Click to view
       </Link>
     </div>
