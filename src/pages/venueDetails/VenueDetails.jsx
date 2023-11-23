@@ -12,6 +12,8 @@ import { load } from "../../components/storage/load";
 import { save } from "../../components/storage/save";
 import VenueMeta from "./components/VenueMeta";
 import VenueBookingCard from "./components/VenueBookingCard";
+import "./VenueDetails.css";
+
 const VenueDetails = () => {
   const VenueUrl = Venues_Details_Url;
   //console.log("VenueUrl: ", VenueUrl);
@@ -45,6 +47,9 @@ const VenueDetails = () => {
   const profileEmail = profile.email;
   //console.log("Profile Email: ", profileEmail);
 
+  const profileVenueManager = profile.venueManager;
+  console.log("profileVenueManager: ", profileVenueManager);
+
   const venueInfo = load("venue_info");
   //console.log("Venue Info: ", venueInfo);
 
@@ -68,6 +73,27 @@ const VenueDetails = () => {
   };
 
   CheckEmailMatch();
+
+  const ShowVenueBookings = () => {
+    if (venueOwnerEmail === profileEmail) {
+      return (
+        <div className="venue_bookings">
+          <h2 className="bookings_header">venue bookings</h2>
+          {emailMatch ? (
+            <ul className="search_results">
+              {venueBookings.map((item) => (
+                <VenueBookingCard key={item.id} item={item} />
+              ))}
+            </ul>
+          ) : (
+            "This is not your venue"
+          )}
+        </div>
+      );
+    } else {
+      return <p>Y ou are not the owner of this venue</p>;
+    }
+  };
 
   const VenueInfo = () => {
     return (
@@ -108,18 +134,7 @@ const VenueDetails = () => {
 
         <VenueMeta />
       </div>
-      <div className="venue_bookings">
-        <h2 className="bookings_header">bookings</h2>
-        {emailMatch ? (
-          <ul className="search_results">
-            {venueBookings.map((item) => (
-              <VenueBookingCard key={item.id} item={item} />
-            ))}
-          </ul>
-        ) : (
-          "This is not your venue"
-        )}
-      </div>
+      {profileVenueManager ? <ShowVenueBookings /> : "My bookings"}
     </main>
   );
 };
