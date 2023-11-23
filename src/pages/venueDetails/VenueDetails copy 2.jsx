@@ -18,7 +18,7 @@ const VenueDetails = () => {
   const VenueUrl = Venues_Details_Url;
   //console.log("VenueUrl: ", VenueUrl);
   const [venue, setVenue] = useState("");
-  console.log("Venue top: ", venue);
+  //console.log("Venue top: ", venue);
   const params = useParams();
   //console.log("Params: ", params);
   //console.log("Params ID: ", params.id);
@@ -48,19 +48,13 @@ const VenueDetails = () => {
   //console.log("Profile Email: ", profileEmail);
 
   const profileVenueManager = profile.venueManager;
-  //console.log("profileVenueManager: ", profileVenueManager);
+  console.log("profileVenueManager: ", profileVenueManager);
 
   const venueInfo = load("venue_info");
   //console.log("Venue Info: ", venueInfo);
 
   const venueBookings = venueInfo.bookings;
   //console.log("Venue Bookings: ", venueBookings);
-
-  const venueMedia = venueInfo.media;
-  console.log("Venue Media: ", venueMedia);
-
-  const venueMediaIndex = venueMedia.index;
-  console.log("Venue Media Index: ", venueMediaIndex);
 
   const venueOwner = venueInfo.owner;
   //console.log("Venue Owner: ", venueOwner);
@@ -134,11 +128,7 @@ const VenueDetails = () => {
         <VenueInfo />
 
         <div className="venue_media_description">
-          <div className="carousel_wrapper">
-            {venueMedia.map((venueMedia, i) => {
-              return <img src={venueMedia} key={i} />;
-            })}
-          </div>
+          <img src={venue.media} className="venue_media_image" />
           <p className="venue_description">{venue.description}</p>
         </div>
 
