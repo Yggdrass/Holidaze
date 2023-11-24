@@ -1,4 +1,4 @@
-import { VenuesUrl } from "../../../components/auth/constants/Url";
+import { CreateVenueUrl } from "../../../components/auth/constants/Url";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faImage,
@@ -33,8 +33,8 @@ const CreateVenueForm = () => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
 
-  const fetchVenueUrl = VenuesUrl;
-  //console.log("fetchVenueUrl: ", fetchVenueUrl);
+  const fetchVenueUrl = CreateVenueUrl;
+  console.log("fetchVenueUrl: ", fetchVenueUrl);
 
   const handleCreateVenueForm = (e) => {
     e.preventDefault();

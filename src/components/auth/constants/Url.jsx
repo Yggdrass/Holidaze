@@ -11,3 +11,7 @@ export const Venues_Details_Url = Url + "/holidaze/venues/";
 export const ProfilesUrl = Url + "/holidaze/profiles/";
 
 export const VenuesUrl = Url + "/holidaze/venues";
+
+export const BookingsUrl = Url + "/holidaze/bookings/";
+
+export const CreateVenueUrl = Url + "/holidaze/venues";
