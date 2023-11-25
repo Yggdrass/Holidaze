@@ -1,4 +1,4 @@
-import { CreateVenueUrl } from "../../../components/auth/constants/Url";
+import { Venues_Details_Url } from "../../../components/auth/constants/Url";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faImage,
@@ -15,28 +15,76 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { load } from "../../../components/storage/load";
+import { useParams } from "react-router-dom";
 
-const CreateVenueForm = () => {
+const UpdateVenueForm = () => {
   const [createdVenue, setCreatedVenue] = useState("");
   console.log("Created Venue from form:", createdVenue);
 
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [media, setMedia] = useState("");
-  const [price, setPrice] = useState(1);
-  const [maxGuests, setMaxGuests] = useState(1);
-  const [wifi, setWifi] = useState(false);
-  const [parking, setParking] = useState(false);
-  const [breakfast, setBreakfast] = useState(false);
-  const [pets, setPets] = useState(false);
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
+  const venue = load("venue_info");
+  console.log("venue: ", venue);
 
-  const fetchVenueUrl = CreateVenueUrl;
-  //console.log("fetchVenueUrl: ", fetchVenueUrl);
+  const venueName = venue.name;
+  console.log("venueName: ", venueName);
 
-  const handleCreateVenueForm = (e) => {
+  const venueDescription = venue.description;
+  console.log("venueDescription: ", venueDescription);
+
+  const venueMedia = venue.media;
+  console.log("venueMedia: ", venueMedia);
+
+  const venuePrice = venue.price;
+  console.log("venuePrice: ", venuePrice);
+
+  const venueMaxGuests = venue.maxGuests;
+  console.log("venueMaxGuests: ", venueMaxGuests);
+
+  let venueMeta = venue.meta;
+  console.log("venueMeta: ", venueMeta);
+
+  let venueWifi = venueMeta.wifi;
+  console.log("venueWifi: ", venueWifi);
+
+  let venueParking = venueMeta.parking;
+  console.log("venueParking: ", venueParking);
+
+  let venueBreakfast = venueMeta.breakfast;
+  console.log("venueBreakfast: ", venueBreakfast);
+
+  let venuePets = venueMeta.pets;
+  console.log("venuePets: ", venuePets);
+
+  const venueLocation = venue.location;
+  console.log("venueLocation: ", venueLocation);
+
+  const venueAddress = venueLocation.address;
+  console.log("venueAddress: ", venueAddress);
+
+  const venueCity = venueLocation.city;
+  console.log("venueCity: ", venueCity);
+
+  const venueCountry = venueLocation.country;
+  console.log("venueCountry: ", venueCountry);
+
+  const [name, setName] = useState(venueName);
+  const [description, setDescription] = useState(venueDescription);
+  const [media, setMedia] = useState(venueMedia);
+  const [price, setPrice] = useState({ venuePrice });
+  const [maxGuests, setMaxGuests] = useState({ venueMaxGuests });
+  const [wifi, setWifi] = useState(venueWifi);
+  const [parking, setParking] = useState(venueParking);
+  const [breakfast, setBreakfast] = useState(venueBreakfast);
+  const [pets, setPets] = useState(venuePets);
+  const [address, setAddress] = useState(venueAddress);
+  const [city, setCity] = useState(venueCity);
+  const [country, setCountry] = useState(venueCountry);
+
+  const params = useParams();
+
+  const updateVenueUrl = Venues_Details_Url + params.id;
+  console.log("updateVenueUrl: ", updateVenueUrl);
+
+  const handleUpdateVenueForm = (e) => {
     e.preventDefault();
     let regobj = {
       name,
@@ -48,7 +96,7 @@ const CreateVenueForm = () => {
 
       location: { address, city, country },
     };
-    console.log("Register Object :", regobj);
+    //console.log("Register Object :", regobj);
 
     const profile = load("profile");
     //console.log("Profile:", profile);
@@ -56,9 +104,9 @@ const CreateVenueForm = () => {
     const AuthToken = profile.accessToken;
     //console.log("Authenticate Token: ", AuthToken);
 
-    async function createVenue() {
+    async function updateVenue() {
       const postData = {
-        method: "POST",
+        method: "PUT",
         headers: {
           Authorization: `Bearer ${AuthToken}`,
           "content-type": "application/json",
@@ -67,7 +115,7 @@ const CreateVenueForm = () => {
       };
 
       try {
-        const response = await fetch(fetchVenueUrl, postData);
+        const response = await fetch(updateVenueUrl, postData);
         console.log("Response :", response);
 
         const result = await response.json();
@@ -77,22 +125,22 @@ const CreateVenueForm = () => {
           setCreatedVenue(result);
           console.log("Result Errors:", result);
           alert(
-            `${profile.name} You have successfully created your venue ${result.name}!`
+            `${profile.name} You have successfully updated your venue ${result.name}!`
           );
           window.location.reload(true);
         } else {
-          alert("Error! Login failed!");
+          alert("Error! update failed!");
         }
       } catch (error) {
         console.log("Catch Error Register: ", error);
       }
     }
-    createVenue();
+    updateVenue();
   };
 
   return (
     <div>
-      <form action="" className="form" onSubmit={handleCreateVenueForm}>
+      <form action="" className="form" onSubmit={handleUpdateVenueForm}>
         <div>
           <h2>general</h2>
           {/*---- Venue Name Input ----*/}
@@ -104,7 +152,7 @@ const CreateVenueForm = () => {
             <input
               type="text"
               id="name"
-              placeholder="Type a venue title"
+              placeholder={venueName}
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -119,7 +167,7 @@ const CreateVenueForm = () => {
             <input
               type="text"
               id="media"
-              placeholder="Url"
+              placeholder={venueMedia}
               value={media}
               onChange={(e) => setMedia(e.target.value)}
             />
@@ -137,6 +185,7 @@ const CreateVenueForm = () => {
             <input
               type="number"
               id="price"
+              placeholder={venuePrice}
               value={price}
               onChange={(e) => setPrice(Number(e.target.value))}
             />
@@ -151,6 +200,7 @@ const CreateVenueForm = () => {
             <input
               type="number"
               id="maxGuests"
+              placeholder={venueMaxGuests}
               value={maxGuests}
               onChange={(e) => setMaxGuests(Number(e.target.value))}
             />
@@ -165,7 +215,7 @@ const CreateVenueForm = () => {
             <input
               type="textarea"
               id="description"
-              placeholder="Type a venue title"
+              placeholder={venueDescription}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
@@ -260,7 +310,7 @@ const CreateVenueForm = () => {
             <input
               type="text"
               id="address"
-              placeholder="Type and address"
+              placeholder={venueAddress}
               value={address}
               onChange={(e) => setAddress(e.target.value)}
             />
@@ -275,7 +325,7 @@ const CreateVenueForm = () => {
             <input
               type="text"
               id="city"
-              placeholder="Type a city"
+              placeholder={venueCity}
               value={city}
               onChange={(e) => setCity(e.target.value)}
             />
@@ -290,7 +340,7 @@ const CreateVenueForm = () => {
             <input
               type="text"
               id="country"
-              placeholder="Type a country"
+              placeholder={venueCountry}
               value={country}
               onChange={(e) => setCountry(e.target.value)}
             />
@@ -298,11 +348,11 @@ const CreateVenueForm = () => {
         </div>
 
         <button type="submit" className="button_green register_form_submit">
-          create venue
+          update venue
         </button>
       </form>
     </div>
   );
 };
 
-export default CreateVenueForm;
+export default UpdateVenueForm;

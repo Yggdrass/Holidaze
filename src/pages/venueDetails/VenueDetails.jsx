@@ -14,6 +14,7 @@ import VenueMeta from "./components/VenueMeta";
 import VenueBookingCard from "./components/VenueBookingCard";
 import "./VenueDetails.css";
 import DeleteVenue from "./components/DeleteVenue";
+import UpdateVenueModal from "./components/UpdateVenueModal";
 
 const VenueDetails = () => {
   const VenueDetailsUrl = Venues_Details_Url;
@@ -142,7 +143,7 @@ const VenueDetails = () => {
         </p>
         <p className="venue_maxGuests">
           <FontAwesomeIcon icon={faUserTie} className="venue_infoGroup1_icon" />
-          created by:
+          created by: {venueOwner.name}
         </p>
       </div>
     );
@@ -157,6 +158,11 @@ const VenueDetails = () => {
           <DeleteVenue />
         ) : (
           "This is not your venue. You are not authorized to delete this one"
+        )}
+        {emailMatch ? (
+          <UpdateVenueModal />
+        ) : (
+          "This is not your venue. You are not authorized to update this one"
         )}
         <div className="venue_media_description">
           <div className="carousel_wrapper">
