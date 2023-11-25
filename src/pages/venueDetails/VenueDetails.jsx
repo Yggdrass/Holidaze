@@ -13,17 +13,19 @@ import { save } from "../../components/storage/save";
 import VenueMeta from "./components/VenueMeta";
 import VenueBookingCard from "./components/VenueBookingCard";
 import "./VenueDetails.css";
+import DeleteVenue from "./components/DeleteVenue";
+import UpdateVenueModal from "./components/UpdateVenueModal";
 
 const VenueDetails = () => {
-  const VenueUrl = Venues_Details_Url;
+  const VenueDetailsUrl = Venues_Details_Url;
   //console.log("VenueUrl: ", VenueUrl);
-  const [venue, setVenue] = useState("");
-  console.log("Venue top: ", venue);
+  const [venue, setVenue] = useState([]);
+  //console.log("Venue top: ", venue);
   const params = useParams();
   //console.log("Params: ", params);
   //console.log("Params ID: ", params.id);
   const FetchNewVenueDetails =
-    VenueUrl + params.id + "?_owner=true&_bookings=true";
+    VenueDetailsUrl + params.id + "?_owner=true&_bookings=true";
   //console.log("FetchNewVenueDetails: ", FetchNewVenueDetails);
 
   const [emailMatch, setEmailMatch] = useState(false);
@@ -31,15 +33,35 @@ const VenueDetails = () => {
 
   //console.log("Wifi: ", venue.meta.wifi);
 
+  async function fetchVenueDetails() {
+    const postData = {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    };
+
+    try {
+      const response = await fetch(FetchNewVenueDetails, postData);
+      //console.log("Response :", response);
+
+      const result = await response.json();
+      //console.log("Result:", result);
+
+      if (response.ok) {
+        setVenue(result);
+        save("venue_info", result);
+        //console.log("Result Success:", result);
+      } else {
+        console.log("Result Error:");
+      }
+    } catch (error) {
+      //console.log("Catch Error Register: ", error);
+    }
+  }
   useEffect(() => {
-    fetch(FetchNewVenueDetails)
-      .then((res) => res.json())
-      .then((json) => {
-        setVenue(json);
-        save("venue_info", json);
-        //console.log("Json", json);
-      });
-  }, [FetchNewVenueDetails]);
+    fetchVenueDetails();
+  }, []);
 
   const profile = load("profile");
   //console.log("Profile: ", profile);
@@ -57,10 +79,10 @@ const VenueDetails = () => {
   //console.log("Venue Bookings: ", venueBookings);
 
   const venueMedia = venueInfo.media;
-  console.log("Venue Media: ", venueMedia);
+  //console.log("Venue Media: ", venueMedia);
 
-  const venueMediaIndex = venueMedia.index;
-  console.log("Venue Media Index: ", venueMediaIndex);
+  // const venueMediaIndex = venueMedia.index;
+  //console.log("Venue Media Index: ", venueMediaIndex);
 
   const venueOwner = venueInfo.owner;
   //console.log("Venue Owner: ", venueOwner);
@@ -121,7 +143,7 @@ const VenueDetails = () => {
         </p>
         <p className="venue_maxGuests">
           <FontAwesomeIcon icon={faUserTie} className="venue_infoGroup1_icon" />
-          created by:
+          created by: {venueOwner.name}
         </p>
       </div>
     );
@@ -132,7 +154,16 @@ const VenueDetails = () => {
       <div className="venue_details_card">
         <h1 className="venue_name">{venue.name}</h1>
         <VenueInfo />
-
+        {emailMatch ? (
+          <DeleteVenue />
+        ) : (
+          "This is not your venue. You are not authorized to delete this one"
+        )}
+        {emailMatch ? (
+          <UpdateVenueModal />
+        ) : (
+          "This is not your venue. You are not authorized to update this one"
+        )}
         <div className="venue_media_description">
           <div className="carousel_wrapper">
             {venueMedia.map((venueMedia, i) => {

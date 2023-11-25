@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { ProfilesUrl } from "../../../components/auth/constants/Url";
 import { load } from "../../../components/storage/load";
-import VenueBookingCard from "../../venueDetails/components/VenueBookingCard";
 import MyVenueCard from "./MyVenueCard";
 
 const VenuesByProfile = () => {
@@ -48,6 +47,7 @@ const VenuesByProfile = () => {
   useEffect(() => {
     fetchVenues();
   }, []);
+
   return (
     <div>
       <h2 className="bookings_header">my venues</h2>
