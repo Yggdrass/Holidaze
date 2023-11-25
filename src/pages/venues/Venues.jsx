@@ -8,6 +8,19 @@ const Venues = () => {
   const AllVenuesUrl = All_Venues_Url;
   const [venues, setVenues] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const filteredVenues = venues.filter((venue) =>
+    venue.name.toLowerCase().includes(searchText.toLocaleLowerCase())
+  );
+
+  const handleChange = (event) => {
+    setSearchText(event.target.value);
+    setIsDropdownOpen(event.target.value !== "");
+  };
+  const handleSelect = () => {
+    setIsDropdownOpen(false);
+  };
 
   useEffect(() => {
     fetch(AllVenuesUrl).then((res) =>
@@ -18,7 +31,7 @@ const Venues = () => {
     );
   }, []);
 
-  //console.log("Venues Set:", venues);
+  console.log("Venues Set:", venues);
 
   return (
     <main className="main_venues">
@@ -33,24 +46,26 @@ const Venues = () => {
           className="search_venue_input"
           id="venues_list_searchInput"
           type="text"
-          placeholder="Search for venues..."
+          placeholder="Search venues by name..."
           value={searchText}
-          onChange={(event) => {
-            setSearchText(event.target.value);
-          }}
+          onChange={handleChange}
         />
       </div>
-      <ul className="search_results">
-        {venues
-          .filter((item) => {
-            return searchText.toLowerCase() === ""
-              ? item
-              : item.title.toLowerCase();
-          })
-          .map((item) => (
-            <VenueCard key={item.id} item={item} />
+      {isDropdownOpen && filteredVenues.length > 0 ? (
+        <ul className="search_results">
+          {filteredVenues.splice(0, 5).map((item) => (
+            <VenueCard key={item.id} item={item}></VenueCard>
           ))}
-      </ul>
+        </ul>
+      ) : (
+        <ul>
+          {filteredVenues.length === 0 && searchText !== "" ? (
+            <p>No venues found</p>
+          ) : (
+            ""
+          )}
+        </ul>
+      )}
     </main>
   );
 };
