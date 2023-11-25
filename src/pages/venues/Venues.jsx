@@ -18,9 +18,6 @@ const Venues = () => {
     setSearchText(event.target.value);
     setIsDropdownOpen(event.target.value !== "");
   };
-  const handleSelect = () => {
-    setIsDropdownOpen(false);
-  };
 
   useEffect(() => {
     fetch(AllVenuesUrl).then((res) =>
