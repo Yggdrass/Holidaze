@@ -2,10 +2,10 @@ import { load } from "../../../components/storage/load";
 
 const VenueMedia = () => {
   const venue = load("venue_details");
-  console.log("Venue: ", venue);
+  //console.log("Venue: ", venue);
 
   const venueMedia = venue.media;
-  console.log("Venue Media: ", venueMedia);
+  //console.log("Venue Media: ", venueMedia);
 
   return (
     <div className="carousel_wrapper">
