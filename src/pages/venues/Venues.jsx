@@ -28,7 +28,7 @@ const Venues = () => {
     );
   }, []);
 
-  console.log("Venues Set:", venues);
+  //console.log("Venues Set:", venues);
 
   return (
     <main className="main_venues">

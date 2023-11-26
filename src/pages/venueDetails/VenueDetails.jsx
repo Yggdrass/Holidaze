@@ -17,23 +17,24 @@ import DeleteVenue from "./components/DeleteVenue";
 import UpdateVenueModal from "./components/UpdateVenueModal";
 
 const VenueDetails = () => {
-  const VenueDetailsUrl = Venues_Details_Url;
-  //console.log("VenueUrl: ", VenueUrl);
   const [venue, setVenue] = useState([]);
   //console.log("Venue top: ", venue);
-  const params = useParams();
-  //console.log("Params: ", params);
-  //console.log("Params ID: ", params.id);
-  const FetchNewVenueDetails =
-    VenueDetailsUrl + params.id + "?_owner=true&_bookings=true";
-  //console.log("FetchNewVenueDetails: ", FetchNewVenueDetails);
 
   const [emailMatch, setEmailMatch] = useState(false);
   //console.log("Does Email Match: ", emailMatch);
 
   //console.log("Wifi: ", venue.meta.wifi);
 
-  async function fetchVenueDetails() {
+  async function FetchVenueDetails() {
+    const params = useParams();
+    //console.log("Params: ", params);
+    //console.log("Params ID: ", params.id);
+    const VenueDetailsUrl = Venues_Details_Url;
+    //console.log("VenueUrl: ", VenueUrl);
+    const FetchNewVenueDetails =
+      VenueDetailsUrl + params.id + "?_owner=true&_bookings=true";
+    //console.log("FetchNewVenueDetails: ", FetchNewVenueDetails);
+
     const postData = {
       method: "GET",
       headers: {
@@ -58,10 +59,11 @@ const VenueDetails = () => {
     } catch (error) {
       //console.log("Catch Error Register: ", error);
     }
+
+    useEffect(() => {
+      FetchVenueDetails();
+    }, []);
   }
-  useEffect(() => {
-    fetchVenueDetails();
-  }, []);
 
   const profile = load("profile");
   //console.log("Profile: ", profile);

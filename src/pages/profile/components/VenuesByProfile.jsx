@@ -5,7 +5,7 @@ import MyVenueCard from "./MyVenueCard";
 
 const VenuesByProfile = () => {
   const [profileVenues, setProfileVenues] = useState("");
-  console.log("Profile Venues: ", profileVenues);
+  //console.log("Profile Venues: ", profileVenues);
 
   const url = ProfilesUrl;
 
@@ -28,14 +28,14 @@ const VenuesByProfile = () => {
 
     try {
       const response = await fetch(fetchVenuesByProfileUrl, postData);
-      console.log("Response :", response);
+      //console.log("Response :", response);
 
       const result = await response.json();
-      console.log("Result:", result.errors);
+      //console.log("Result:", result.errors);
 
       if (response.ok) {
         setProfileVenues(result);
-        console.log("Result Success:", result);
+        //console.log("Result Success:", result);
       } else {
         console.log("Result Error:");
       }

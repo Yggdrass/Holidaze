@@ -2,7 +2,7 @@
 
 .main_venues {
   background-image: url("../../../public/assets/main_loggedIn_background.png");
-  height: 100%;
+  height: 80vh;
   width: 100vw;
   background-size: contain;
   display: flex;

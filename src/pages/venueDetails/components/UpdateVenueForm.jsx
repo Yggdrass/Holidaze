@@ -21,7 +21,7 @@ const UpdateVenueForm = () => {
   const [createdVenue, setCreatedVenue] = useState("");
   console.log("Created Venue from form:", createdVenue);
 
-  const venue = load("venue_info");
+  const venue = load("venue_details");
   console.log("venue: ", venue);
 
   const venueName = venue.name;

@@ -12,13 +12,13 @@ import { load } from "../../../components/storage/load";
 import "../VenueDetails.css";
 
 const VenueMeta = () => {
-  const venueInfo = load("venue_info");
-  //console.log("Venue Info: ", venueInfo);
+  const venue = load("venue_details");
+  //console.log("Venue Info: ", venue);
 
-  const venueMeta = venueInfo.meta;
+  const venueMeta = venue.meta;
   //console.log("Venue Meta: ", venueMeta);
 
-  const venueLocation = venueInfo.location;
+  const venueLocation = venue.location;
   //console.log("Venue Location: ", venueLocation);
 
   return (
