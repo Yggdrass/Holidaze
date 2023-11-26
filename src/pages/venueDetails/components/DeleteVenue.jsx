@@ -4,19 +4,19 @@ import { Venues_Details_Url } from "../../../components/auth/constants/Url";
 
 const DeleteVenue = () => {
   const profile = load("profile");
-  console.log("Profile delete: ", profile);
+  //console.log("Profile delete: ", profile);
 
   const AuthToken = profile.accessToken;
-  console.log("Auth Token delete: ", AuthToken);
+  //console.log("Auth Token delete: ", AuthToken);
 
   const params = useParams();
-  console.log("Params delete: ", params);
+  //console.log("Params delete: ", params);
 
   const VenuesUrl = Venues_Details_Url;
-  console.log("Venues Url delete: ", VenuesUrl);
+  //console.log("Venues Url delete: ", VenuesUrl);
 
   const DeleteVenueUrl = VenuesUrl + params.id;
-  console.log("Delete Venue Url: ", DeleteVenueUrl);
+  //console.log("Delete Venue Url: ", DeleteVenueUrl);
 
   const navigate = useNavigate();
 

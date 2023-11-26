@@ -1,23 +1,22 @@
-import { useEffect, useState } from "react";
 import { load } from "../../../components/storage/load";
 import DeleteVenue from "./DeleteVenue";
 import UpdateVenueModal from "./UpdateVenueModal";
 
 const ShowUpdateDelete = () => {
   const profile = load("profile");
-  console.log("Profile: ", profile);
+  //console.log("Profile: ", profile);
 
   const profileEmail = profile.email;
-  console.log("Profile Email: ", profileEmail);
+  //console.log("Profile Email: ", profileEmail);
 
   const venue = load("venue_details");
-  console.log("Venue: ", venue);
+  //console.log("Venue: ", venue);
 
   const venueOwner = venue.owner;
-  console.log("Venue Owner: ", venueOwner);
+  //console.log("Venue Owner: ", venueOwner);
 
   const venueOwnerEmail = venueOwner.email;
-  console.log("Venue Owner Email: ", venueOwnerEmail);
+  //console.log("Venue Owner Email: ", venueOwnerEmail);
 
   return (
     <>
