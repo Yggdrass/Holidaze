@@ -77,7 +77,7 @@ const Venue = () => {
       </div>
       profileVenueManager
       <CreateBookingModal />
-      <MyBookings />
+      {/* <MyBookings /> */}
     </main>
   );
 };

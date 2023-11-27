@@ -20,7 +20,8 @@ const MyBookings = () => {
   const AuthToken = profile.accessToken;
   console.log("Authenticate Token: ", AuthToken);
 
-  const bookingsByProfileUrl = ProfilesUrl + profileName + "/bookings";
+  const bookingsByProfileUrl =
+    ProfilesUrl + profileName + "/bookings" + "?_venue=true";
   console.log("bookingsByProfileUrl", bookingsByProfileUrl);
 
   async function fetchBookings() {
