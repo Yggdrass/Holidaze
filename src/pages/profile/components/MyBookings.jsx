@@ -1,24 +1,30 @@
-import { useState } from "react";
-import { ProfilesUrl } from "../../../components/auth/constants/Url";
+import { useEffect, useState } from "react";
+import {
+  BookingsUrl,
+  ProfilesUrl,
+} from "../../../components/auth/constants/Url";
 import { load } from "../../../components/storage/load";
-import Booking from "./Booking";
+import BookingCard from "../../booking/BookingDetails";
+import { save } from "../../../components/storage/save";
+import VenueBookingCard from "../../venueDetails/components/VenueBookingCard";
 
 const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
+  console.log("Bookings: ", bookings);
 
   const profile = load("profile");
   console.log("Profile:", profile);
   const profileName = profile.name;
-  //console.log("Profile Name:", profileName);
+  console.log("Profile Name:", profileName);
 
   const AuthToken = profile.accessToken;
-  //console.log("Authenticate Token: ", AuthToken);
+  console.log("Authenticate Token: ", AuthToken);
 
-  const profileBookingsUrl = ProfilesUrl + profileName + "/bookings";
-  console.log("Update Avatar Url: ", profileBookingsUrl);
+  const bookingsByProfileUrl = ProfilesUrl + profileName + "/bookings";
+  console.log("bookingsByProfileUrl", bookingsByProfileUrl);
 
   async function fetchBookings() {
-    const postData = {
+    const fetchOptions = {
       method: "GET",
       headers: {
         Authorization: `Bearer ${AuthToken}`,
@@ -27,7 +33,7 @@ const MyBookings = () => {
     };
 
     try {
-      const response = await fetch(profileBookingsUrl, postData);
+      const response = await fetch(bookingsByProfileUrl, fetchOptions);
       console.log("Response :", response);
 
       const result = await response.json();
@@ -43,13 +49,16 @@ const MyBookings = () => {
       console.log("Catch Error Register: ", error);
     }
   }
-  fetchBookings();
+
+  useEffect(() => {
+    fetchBookings();
+  }, []);
 
   return (
     <div>
       <ul>
         {bookings.map((item) => (
-          <Booking key={item.id} item={item} />
+          <VenueBookingCard key={item.id} item={item} />
         ))}
       </ul>
     </div>

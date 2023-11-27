@@ -16,6 +16,8 @@ const CreateBookingForm = () => {
   console.log("venue", venue);
   const venueId = venue.id;
   console.log("venueId: ", venueId);
+  const venueMaxGuests = venue.maxGuests;
+  console.log("Venue Max Guests:", venueMaxGuests);
   const createBookingUrl = BookingsUrl;
   console.log("createBookingUrl", createBookingUrl);
   const profile = load("profile");
@@ -51,17 +53,16 @@ const CreateBookingForm = () => {
           alert(
             `${profile.name} You have successfully created a booking on this venue!`
           );
+          navigate(`/profile`);
           window.location.reload(true);
-        } else {
-          alert("Error! booking failed!");
+        } else if (guests > venueMaxGuests) {
+          alert("Error! booking failed! Exceeded max guests allowed");
         }
       } catch (error) {
         console.log("Catch Error Register Booking: ", error);
       }
     }
     registerBooking();
-
-    navigate(`/profile`);
   };
 
   return (

@@ -7,7 +7,8 @@ import VenueInfo from "./components/VenueInfo";
 import VenueMeta from "./components/VenueMeta";
 import ShowUpdateDelete from "./components/ShowUpdateDelete";
 import VenueMedia from "./components/VenueMedia";
-import CreateBookingForm from "../booking/CreateBookingForm";
+import CreateBookingModal from "../booking/CreateBookingModal";
+import MyBookings from "../profile/components/MyBookings";
 
 const Venue = () => {
   const [venue, setVenue] = useState("");
@@ -75,7 +76,8 @@ const Venue = () => {
         <VenueMeta />
       </div>
       profileVenueManager
-      <CreateBookingForm />
+      <CreateBookingModal />
+      <MyBookings />
     </main>
   );
 };

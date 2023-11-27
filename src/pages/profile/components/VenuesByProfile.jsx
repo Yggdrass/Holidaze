@@ -5,7 +5,7 @@ import MyVenueCard from "./MyVenueCard";
 
 const VenuesByProfile = () => {
   const [profileVenues, setProfileVenues] = useState("");
-  //console.log("Profile Venues: ", profileVenues);
+  console.log("Profile Venues: ", profileVenues);
 
   const url = ProfilesUrl;
 

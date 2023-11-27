@@ -5,8 +5,9 @@ import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
 import Venues from "./pages/venues/Venues";
 import ProfilePage from "./pages/profile/ProfilePage";
-import BookingDetails from "./pages/booking/BookingDetails";
 import Venue from "./pages/venueDetails/Venue";
+import BookingCard from "./pages/booking/BookingDetails";
+import Booking from "./pages/booking/Booking";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/venues" element={<Venues />} />
           <Route path="/venues/:id" element={<Venue />} />
-          <Route path="/bookings/:id" element={<BookingDetails />} />
+          <Route path="/bookings/:id" element={<Booking />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
         <Footer />

@@ -8,6 +8,7 @@ import UpdateAvatarModal from "./components/UpdateAvatarModal";
 import UpdateVenueManagerModal from "./components/UpdateVenueManagerModal";
 import CreateVenueModal from "./components/CreateVenueModal";
 import VenuesByProfile from "./components/VenuesByProfile";
+import MyBookings from "./components/MyBookings";
 
 const ProfilePage = () => {
   const url = ProfilesUrl;
@@ -67,6 +68,7 @@ const ProfilePage = () => {
       <div>
         <VenuesByProfile />
       </div>
+      <MyBookings />
     </main>
   );
 };
