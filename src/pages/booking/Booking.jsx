@@ -5,6 +5,7 @@ import { save } from "../../components/storage/save";
 import { load } from "../../components/storage/load";
 import BookingDetails from "./BookingDetails";
 import UpdateBookingModal from "./UpdateBookingModal";
+import DeleteBooking from "./DeleteBooking";
 
 const Booking = () => {
   const [booking, setBooking] = useState("");
@@ -70,6 +71,7 @@ const Booking = () => {
       <BookingDetails />
       fixed beyond This
       <UpdateBookingModal />
+      <DeleteBooking />
     </main>
   );
 };
