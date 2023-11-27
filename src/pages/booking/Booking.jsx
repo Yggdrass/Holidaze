@@ -4,6 +4,7 @@ import { BookingsUrl } from "../../components/auth/constants/Url";
 import { save } from "../../components/storage/save";
 import { load } from "../../components/storage/load";
 import BookingDetails from "./BookingDetails";
+import UpdateBookingModal from "./UpdateBookingModal";
 
 const Booking = () => {
   const [booking, setBooking] = useState("");
@@ -67,6 +68,8 @@ const Booking = () => {
   return (
     <main className="main_booking_details">
       <BookingDetails />
+      fixed beyond This
+      <UpdateBookingModal />
     </main>
   );
 };
