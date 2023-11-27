@@ -13,6 +13,7 @@ const Venues = () => {
   const filteredVenues = venues.filter((venue) =>
     venue.name.toLowerCase().includes(searchText.toLocaleLowerCase())
   );
+  console.log("Filtered venues: ", venues);
 
   const handleChange = (event) => {
     setSearchText(event.target.value);

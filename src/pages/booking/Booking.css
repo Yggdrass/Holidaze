@@ -1,0 +1,42 @@
+.booking_details_section {
+  font-size: 3rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1200px;
+}
+
+.booking_details_container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  background-color: var(--white);
+  gap: 2rem;
+  align-content: flex-start;
+  max-width: 90vw;
+}
+
+.booking_subsection {
+  display: flex;
+  gap: 2rem;
+  text-align: left;
+  align-items: center;
+}
+/* 
+.booking_details_section {
+  display: inherit;
+} */
+
+.booking_category_name {
+  font-weight: bold;
+}
+
+.booking_category_value,
+.booking_category_name {
+  font-size: 3rem;
+}
+
+.main_booking_details {
+  background-image: url("../../../public/assets/main_loggedIn_background.png");
+}
