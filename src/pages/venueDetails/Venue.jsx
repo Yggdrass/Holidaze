@@ -9,9 +9,10 @@ import ShowUpdateDelete from "./components/ShowUpdateDelete";
 import VenueMedia from "./components/VenueMedia";
 import CreateBookingModal from "../booking/CreateBookingModal";
 import MyBookings from "../profile/components/MyBookings";
+import VenueCalendar from "./components/VenueCalendar";
 
 const Venue = () => {
-  const [venue, setVenue] = useState("");
+  const [venue, setVenue] = useState([]);
   console.log("venue: ", venue);
   const params = useParams();
   console.log("Params: ", params);
@@ -78,6 +79,7 @@ const Venue = () => {
       profileVenueManager
       <CreateBookingModal />
       {/* <MyBookings /> */}
+      <VenueCalendar />
     </main>
   );
 };
