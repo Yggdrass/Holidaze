@@ -4,7 +4,6 @@ import { load } from "../../components/storage/load";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { DatePicker } from "antd";
 
 const CreateBookingForm = () => {
   const [dateFrom, setDateFrom] = useState("");
