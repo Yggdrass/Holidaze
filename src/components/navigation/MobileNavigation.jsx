@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NavLinks from "./NavLinks";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
-import "./Navigation.css";
 import { useState } from "react";
 
 const MobileNavigation = () => {

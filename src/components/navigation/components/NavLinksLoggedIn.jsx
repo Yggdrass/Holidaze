@@ -39,19 +39,11 @@ const NavLinksLoggedIn = () => {
       >
         <Link to="/profile">profile</Link>
       </motion.li>
-      <motion.li
-        initial={animtateFrom}
-        animate={animtateTo}
-        transition={{ delay: 0.2 }}
-        onClick={() => props.isMobile && props.closeMobileMenu()}
-      >
-        <Link to="/calendar">calendar</Link>
-      </motion.li>
       <motion.button
         initial={animtateFrom}
         animate={animtateTo}
         transition={{ delay: 0.25 }}
-        className="button_purple"
+        className="button_purple button_logout"
         onClick={handleLogout}
       >
         logout

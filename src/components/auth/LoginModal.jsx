@@ -1,6 +1,8 @@
 import LoginForm from "./components/LoginForm";
 import "./Auth.css";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 const LoginModal = () => {
   const [loginModal, setLoginModal] = useState(false);
@@ -24,9 +26,15 @@ const LoginModal = () => {
       </button>
 
       {loginModal && (
-        <div className="modal">
+        <div className="modal_login">
           <div className="overlay" onClick={toggleLoginModal}></div>
-          <div className="modal-content">
+          <div className="modal_content_login">
+            <button
+              className="close_modal_button button_purple"
+              onClick={toggleLoginModal}
+            >
+              <FontAwesomeIcon icon={faX} />
+            </button>
             <h1 className="h1_modal_title">login</h1>
             <LoginForm />
           </div>

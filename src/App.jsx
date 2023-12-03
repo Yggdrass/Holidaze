@@ -1,13 +1,15 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/footer/Footer";
-import Header from "./components/header/Header";
-import Home from "./pages/home/Home";
+import "./components/css/Buttons.css";
+import "./components/css/Layout.css";
+import "./components/css/Navigation.css";
+import Footer from "./components/layout/Footer";
+import Header from "./components/layout/Header";
 import Venues from "./pages/venues/Venues";
 import ProfilePage from "./pages/profile/ProfilePage";
 import Venue from "./pages/venueDetails/Venue";
-import BookingCard from "./pages/booking/BookingDetails";
 import Booking from "./pages/booking/Booking";
+import Home from "./pages/home/Home";
 
 function App() {
   return (

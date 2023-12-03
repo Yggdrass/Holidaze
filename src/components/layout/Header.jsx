@@ -1,15 +1,12 @@
 import MobileNavigation from "../navigation/MobileNavigation";
 import Navigation from "../navigation/Navigation";
-import "./Header.css";
-import "../navigation/Navigation.css";
 
 const Header = () => {
   return (
     <header>
       <img
         src="../../../public/assets/holidaze_logo_black.png"
-        alt="Logo"
-        className="NavBarLogo"
+        alt="Holidaze Logo. The letter H with a tiara on top, all in pink on a black background."
       />
       <Navigation />
       <MobileNavigation />

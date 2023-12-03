@@ -1,6 +1,8 @@
 import RegisterForm from "./components/RegisterForm";
 import "./Auth.css";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 const RegisterModal = () => {
   const [registerModal, setRegisterModal] = useState(false);
@@ -24,10 +26,16 @@ const RegisterModal = () => {
       </button>
 
       {registerModal && (
-        <div className="modal ">
+        <div className="modal_register">
           <div className="overlay" onClick={toggleRegisterModal}></div>
-          <div className="modal-content">
-            <h1 className="h1_modal_title">register</h1>
+          <div className="modal_content_register">
+            <button
+              className="close_modal_button button_purple"
+              onClick={toggleRegisterModal}
+            >
+              <FontAwesomeIcon icon={faX} />
+            </button>
+            <h1>register</h1>
             <RegisterForm />
           </div>
         </div>

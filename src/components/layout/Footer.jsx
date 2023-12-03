@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Footer.css";
 import {
   faSquareFacebook,
   faInstagram,
@@ -14,9 +13,9 @@ const Footer = () => {
         alt=""
       />
       <div className="social_media_icons">
-        <FontAwesomeIcon icon={faSquareFacebook} className="footer_icons" />
-        <FontAwesomeIcon icon={faInstagram} className="footer_icons" />
-        <FontAwesomeIcon icon={faTwitter} className="footer_icons" />
+        <FontAwesomeIcon icon={faSquareFacebook} className="footer_icon" />
+        <FontAwesomeIcon icon={faInstagram} className="footer_icon" />
+        <FontAwesomeIcon icon={faTwitter} className="footer_icon" />
       </div>
       <p>@Copyright Holidaze 2023</p>
     </footer>

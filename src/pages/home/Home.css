@@ -1,14 +1,11 @@
-@import "../../App.css";
-
 .main-loggedIn,
 .main-loggedOut {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  max-width: 100%;
 
   background-size: contain;
   display: flex;
   flex-direction: column;
-  padding-bottom: 3rem;
 }
 
 .main-loggedIn {
@@ -19,55 +16,30 @@
   background-image: url("../../../public/assets/backgroundHome.png");
 }
 
-.main-loggedIn .button_green {
-  font-size: 2rem;
+@media (max-width: 475px) {
 }
 
-h1 {
-  margin-top: 3rem;
-  font-size: 8rem;
-  color: var(--black);
-  background-color: var(--white);
+@media (max-width: 640px) {
 }
 
-.login_button_home,
-.register_button_home {
-  font-size: min(2rem, 3rem);
-}
-
-.button_purple {
-  font-size: 1.2rem;
-}
-
-.buttons {
-  display: flex;
-  gap: 10rem;
-  justify-content: center;
-  flex-direction: row;
+@media (max-width: 768px), (orientation: landscape) {
 }
 
 @media (max-width: 1024px) {
-  .buttons {
-    flex-direction: column;
-    align-items: center;
-    margin: 2rem;
-    gap: 8rem;
-  }
-
-  .login_button_home,
-  .register_button_home {
-    font-size: min(3rem);
-  }
+  /* .main-loggedIn,
+  .main-loggedOut {
+    padding-bottom: 20rem;
+  } */
 }
 
-@media (max-width: 667px) {
-  h1 {
-    font-size: 4rem;
-  }
+@media (max-width: 1280px) {
+  /* .main-loggedIn,
+  .main-loggedOut {
+    padding-bottom: 27rem;
+  } */
+}
 
-  main {
-    padding-bottom: 20rem;
-  }
+@media (min-width: 1536px) {
 }
 
 /*

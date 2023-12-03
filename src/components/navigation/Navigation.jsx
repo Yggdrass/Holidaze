@@ -1,5 +1,4 @@
 import NavLinks from "./NavLinks";
-import "./Navigation.css";
 
 const Navigation = () => {
   return (

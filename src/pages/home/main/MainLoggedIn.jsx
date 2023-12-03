@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../../pages/home/Home";
+import "../Home.css";
 
 const MainLoggedIn = () => {
   return (
