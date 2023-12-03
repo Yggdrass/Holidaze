@@ -1,0 +1,137 @@
+button,
+.button {
+  border-radius: 8px;
+  border: 2px solid var(--white);
+  color: var(--black);
+  text-transform: uppercase;
+  padding: 0.4em 0.8em;
+  font-weight: bold;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  border-radius: 25px;
+  text-shadow: 4px 5px 5px var(--black);
+  box-shadow: 4px 5px 10px var(--black);
+}
+
+.button_green {
+  background-color: var(--green);
+}
+
+.button_purple {
+  background-color: var(--purple);
+}
+
+.button_green,
+.button_purple {
+  color: var(--white);
+}
+
+.button_green:hover,
+.button_purple:hover {
+  background-color: var(--white);
+}
+
+.button_green:hover {
+  color: var(--green);
+  border: 2px solid var(--green);
+}
+
+.button_purple:hover {
+  color: var(--purple);
+  border: 2px solid var(--purple);
+}
+
+.search_venues_button {
+  font-size: clamp(2rem, 4vw, 4rem);
+}
+
+.button_logout {
+  font-size: 1.2rem;
+}
+
+.close_modal_button {
+  position: inherit;
+  right: 10%;
+}
+
+.login_button_home,
+.register_button_home {
+  font-size: min(2rem, 3rem);
+}
+
+nav ul li .login_button_home,
+nav ul li .register_button_home {
+  font-size: 1rem;
+}
+
+.buttons_container {
+  display: flex;
+  gap: 10rem;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.update_profile_buttons_container {
+  display: flex;
+  margin: 2em auto;
+  gap: 6em;
+  background-color: var(--pink);
+  padding: 2em 30em;
+  max-width: 90%;
+}
+
+@media (max-width: 475px) {
+  .close_modal_button {
+    position: inherit;
+    right: 35%;
+  }
+}
+
+@media (max-width: 640px) {
+}
+
+@media (max-width: 768px) {
+  .buttons_container {
+    flex-direction: column;
+    padding-top: 5rem;
+    gap: 6rem;
+  }
+}
+
+@media (max-width: 768px), (orientation: landscape) {
+  .buttons_container {
+    padding-bottom: 8em;
+  }
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 1280px) {
+  .button_logout {
+    font-size: 2.3rem;
+    border-radius: 30px;
+  }
+}
+
+@media (min-width: 1536px) {
+}
+
+/* @media (max-width: 475px) {
+}
+
+@media (max-width: 640px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 1280px) {
+}
+
+@media (max-width: 1536px) {
+} */

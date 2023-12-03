@@ -1,8 +1,8 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import VenueCard from "./components/VenueCard";
-import { All_Venues_Url } from "../../components/auth/constants/Url";
+import VenueCard from "../../components/cards/VenueCard";
 import { useEffect, useState } from "react";
+import { All_Venues_Url } from "../../constants/Url";
 
 const Venues = () => {
   const AllVenuesUrl = All_Venues_Url;

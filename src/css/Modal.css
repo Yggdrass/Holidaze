@@ -1,0 +1,121 @@
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.overlay,
+.modal_login,
+.modal_register,
+.modal_updateAvatar,
+.modal_updateVenueManager,
+.modal_createVenue {
+  max-width: 100vw;
+  max-height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+  text-transform: uppercase;
+}
+
+.h1_avatarModal_title,
+.h1_venueManagerModal_title,
+.h1_createVenueModal_title {
+  font-size: 5rem;
+}
+
+.overlay {
+  background: var(--pink_overlay);
+}
+
+.modal_content_login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  min-width: 10em;
+  padding: 1.5em 0;
+}
+
+.modal_content_updateAvatar,
+.modal_content_updateVenueManager,
+.modal_content_createVenue {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  min-width: 10em;
+  padding: 2em 5em 6em 5em;
+}
+
+.modal_content_register {
+  position: absolute;
+  margin-top: 15em;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  max-width: 30em;
+  min-width: 10em;
+  padding: 5em 0;
+}
+
+@media (max-width: 475px), (orientation: portrait) {
+  .form {
+    min-width: 1em;
+    padding: 0 6em;
+  }
+}
+
+@media (max-width: 768px), (orientation: portrait) {
+  .h1_modal_title {
+    font-size: min(2rem, 2vw + 1, 5rem);
+  }
+
+  input {
+    font-size: min(2rem, 2vw + 1, 5rem);
+  }
+}
+
+@media (max-width: 768px), (orientation: landscape) {
+  .modal_content_login {
+    margin-top: 12em;
+  }
+  .modal_content_register {
+    margin-top: 35em;
+    top: -10%;
+  }
+}
+
+@media (max-width: 1080px), (orientation: portrait) {
+  div .modal_content_login {
+    margin-top: 10em;
+    min-width: 20em;
+    padding: 2em;
+  }
+
+  div .modal_content_register {
+    margin-top: 50em;
+    top: 20%;
+    max-width: 40em;
+    padding: 3em 5em;
+  }
+}
+
+@media (max-width: 2560px) {
+  div .modal_content_login {
+    top: 15em;
+    min-width: 20em;
+    padding: 2em;
+  }
+
+  div .modal_content_register {
+    top: -5em;
+    max-width: 40em;
+    padding: 3em 5em;
+  }
+}

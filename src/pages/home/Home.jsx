@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Home.css";
-import MainLoggedIn from "../../components/main/MainLoggedIn";
-import MainLoggedOut from "../../components/main/MainLoggedOut";
+import MainLoggedIn from "../../components/layout/MainLoggedIn";
+import MainLoggedOut from "../../components/layout/MainLoggedOut";
 
 const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
