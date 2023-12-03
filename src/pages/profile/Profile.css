@@ -7,3 +7,87 @@
   flex-direction: column;
   padding-bottom: 3rem;
 }
+
+.avatar {
+  max-width: 30em;
+}
+
+.profile_info_container {
+  display: flex;
+  gap: 10em;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+  padding: 6em 30em;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.profile_info {
+  max-width: 40em;
+}
+
+.info_block {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.info_block,
+.info_block p {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.info_block_text {
+  max-width: 40ch;
+  text-align: middle;
+}
+
+.myVenues_header,
+.myBookings_header {
+  text-transform: uppercase;
+  font-size: 4rem;
+}
+
+.myVenues_compontent,
+.myBookings_compontent {
+  background-color: var(--white);
+  max-width: 85vw;
+  margin: 2em auto;
+  padding: 2em 6em 10em 6em;
+  max-height: 100%;
+}
+
+.myVenues_container,
+.myBookings_container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5rem;
+}
+
+.profilePageHeader {
+  font-size: 10rem;
+  padding: 1rem 0 3rem 0;
+}
+
+@media (max-width: 475px) {
+}
+
+@media (max-width: 640px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 768px), (orientation: landscape) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 1280px) {
+}
+
+@media (min-width: 1536px) {
+}

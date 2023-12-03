@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import NavLinksLoggedIn from "./components/NavLinksLoggedIn";
-import NavLinksLoggedOut from "./components/NavLinksLoggedOut";
+import NavLinksLoggedIn from "./NavLinksLoggedIn";
+import NavLinksLoggedOut from "./NavLinksLoggedOut";
 
 const NavLinks = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

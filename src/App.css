@@ -1,6 +1,5 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
   margin: 0;
   text-align: center;
   --white: #fff;
@@ -37,10 +36,6 @@ h1 {
   font-size: max(4rem, 8vw + 1rem, 8rem);
   color: var(--black);
   background-color: var(--white);
-}
-
-p {
-  font-size: 1rem;
 }
 
 /* @media (max-width: 1366px) {
