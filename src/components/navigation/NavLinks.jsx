@@ -1,4 +1,3 @@
-import "./Navigation.css";
 import { useEffect, useState } from "react";
 import NavLinksLoggedIn from "./components/NavLinksLoggedIn";
 import NavLinksLoggedOut from "./components/NavLinksLoggedOut";

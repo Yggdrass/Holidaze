@@ -1,6 +1,6 @@
 import LoginModal from "../auth/LoginModal";
 import RegisterModal from "../auth/RegisterModal";
-import "../../pages/home/Home";
+import "../Home.css";
 
 const MainLoggedOut = () => {
   return (

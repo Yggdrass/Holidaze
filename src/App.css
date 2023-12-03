@@ -1,4 +1,6 @@
-#root {
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
   margin: 0;
   text-align: center;
   --white: #fff;
@@ -8,3 +10,41 @@
   --purple: #a66af5;
   --green: #75f491;
 }
+
+html {
+  margin: 0;
+  padding: 0;
+  margin: 0 auto;
+}
+
+body {
+  margin: 0 auto;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: var(--purple);
+}
+
+h1 {
+  margin-top: 3rem;
+  font-size: max(4rem, 8vw + 1rem, 8rem);
+  color: var(--black);
+  background-color: var(--white);
+}
+
+p {
+  font-size: 1rem;
+}
+
+/* @media (max-width: 1366px) {
+  h1 {
+    font-size: 4rem;
+  }
+} */
