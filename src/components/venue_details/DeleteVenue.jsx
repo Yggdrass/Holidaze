@@ -46,7 +46,14 @@ const DeleteVenue = () => {
     }
   }
 
-  return <button onClick={deleteRequest}>Delete Venue</button>;
+  return (
+    <button
+      className="button_purple delete_venue_button"
+      onClick={deleteRequest}
+    >
+      Delete Venue
+    </button>
+  );
 };
 
 export default DeleteVenue;

@@ -31,6 +31,20 @@ const Venues = () => {
 
   //console.log("Venues Set:", venues);
 
+  const ShowVenues = () => {
+    if (filteredVenues.length > 0) {
+      return (
+        <ul className="search_results">
+          {venues.sort().map((item) => (
+            <VenueCard key={item.id} item={item}></VenueCard>
+          ))}
+        </ul>
+      );
+    } else {
+      <p>No venues found</p>;
+    }
+  };
+
   return (
     <main className="main_venues">
       <h1 className="search_venues_title">search venues</h1>
@@ -41,7 +55,7 @@ const Venues = () => {
         />
         <input
           name="venues_list_searchInput"
-          className="search_venue_input"
+          className="search_venues_input"
           id="venues_list_searchInput"
           type="text"
           placeholder="Search venues by name..."
@@ -49,6 +63,7 @@ const Venues = () => {
           onChange={handleChange}
         />
       </div>
+      <ShowVenues />
       {isDropdownOpen && filteredVenues.length > 0 ? (
         <ul className="search_results">
           {filteredVenues.splice(0, 5).map((item) => (

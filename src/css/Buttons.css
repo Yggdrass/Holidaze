@@ -81,6 +81,36 @@ nav ul li .register_button_home {
   max-width: 90%;
 }
 
+.update_delete_venue_buttons {
+  display: flex;
+
+  gap: 5rem;
+}
+
+.delete_venue_button,
+.delete_booking_button {
+  font-size: clamp(2rem, 4vw + 0.2rem, 2rem);
+}
+
+.venue_details_button_container,
+.booking_details_buttons_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+.booking_details_buttons_container {
+  padding: 4rem 0 4rem 0;
+}
+
+.update_avatar_button,
+.create_venue_button,
+.update_venueManagerRole_button {
+  font-size: 3rem;
+  max-width: 30rem;
+}
+
 @media (max-width: 475px) {
   .close_modal_button {
     position: inherit;
@@ -89,6 +119,16 @@ nav ul li .register_button_home {
 }
 
 @media (max-width: 640px) {
+  .update_avatar_button,
+  .create_venue_button,
+  .update_venueManagerRole_button {
+    font-size: 1.8rem;
+    max-width: 1.8rem;
+  }
+
+  .update_profile_buttons_container {
+    margin: 2em 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -105,7 +145,29 @@ nav ul li .register_button_home {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1080px) {
+  .update_avatar_button,
+  .create_venue_button,
+  .update_venueManagerRole_button {
+    font-size: 2rem;
+  }
+
+  .booking_details_buttons_container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .update_profile_buttons_container {
+    align-items: center;
+    flex-direction: column;
+    max-width: 5em;
+    padding: 3em 10em;
+  }
+
+  .venue_details_button_container {
+    flex-direction: column;
+    gap: 4rem;
+  }
 }
 
 @media (max-width: 1280px) {
@@ -115,7 +177,19 @@ nav ul li .register_button_home {
   }
 }
 
-@media (min-width: 1536px) {
+@media (max-width: 1980px) {
+  .update_avatar_button,
+  .create_venue_button,
+  .update_venueManagerRole_button {
+    font-size: 2rem;
+    max-width: 15rem;
+  }
+
+  .update_profile_buttons_container {
+    align-items: center;
+    max-width: 60em;
+    padding: 3em 10em;
+  }
 }
 
 /* @media (max-width: 475px) {

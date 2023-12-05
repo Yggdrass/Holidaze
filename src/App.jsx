@@ -10,9 +10,9 @@ import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import Venues from "./pages/venues/Venues";
 import ProfilePage from "./pages/profile/ProfilePage";
-import Venue from "./pages/venueDetails/Venue";
 import Booking from "./components/booking/Booking";
 import Home from "./pages/home/Home";
+import VenueDetails from "./pages/venue_details/VenueDetails";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/venues" element={<Venues />} />
-          <Route path="/venues/:id" element={<Venue />} />
+          <Route path="/venues/:id" element={<VenueDetails />} />
           <Route path="/bookings/:id" element={<Booking />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>

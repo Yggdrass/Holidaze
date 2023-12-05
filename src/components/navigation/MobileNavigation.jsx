@@ -22,7 +22,7 @@ const MobileNavigation = () => {
     />
   );
 
-  const closeMobileMenu = () => setOpen(false);
+  const closeMobileMenu = () => setOpen(!open);
 
   return (
     <nav className="MobileNavigation">

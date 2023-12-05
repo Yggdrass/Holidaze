@@ -16,7 +16,7 @@ const CreateVenueModal = () => {
   return (
     <div>
       <button
-        className="button_green btn_modal register_button_home"
+        className="button_green btn_modal create_venue_button"
         onClick={toggleCreateVenueModal}
       >
         create a venue

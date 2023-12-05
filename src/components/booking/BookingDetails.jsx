@@ -1,6 +1,7 @@
 import { faCalendar, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { load } from "../storage/load";
+import "./Booking.css";
 
 const BookingDetails = () => {
   const booking = load("booking_details");
@@ -15,7 +16,9 @@ const BookingDetails = () => {
   return (
     <div className="booking_details_container">
       <div className="booking_details_section">
-        <h2 className="booking_details_title">{bookingVenue.name}</h2>
+        <h2 className="booking_details_title">
+          {bookingVenue.name} booking details :
+        </h2>
       </div>
 
       <div>
@@ -27,7 +30,9 @@ const BookingDetails = () => {
             />
             <div className="booking_subsection">
               <p className="booking_category_name">From: </p>
-              <p className="booking_category_value">{booking.dateFrom}</p>
+              <p className="booking_category_value">
+                {booking.dateFrom.slice(0, 10)}
+              </p>
             </div>
           </div>
           <div className="booking_details_section">
@@ -37,7 +42,9 @@ const BookingDetails = () => {
             />
             <div className="booking_subsection">
               <p className="booking_category_name">To: </p>
-              <p className="booking_category_value">{booking.dateTo}</p>
+              <p className="booking_category_value">
+                {booking.dateTo.slice(0, 10)}
+              </p>
             </div>
           </div>
         </div>
@@ -55,8 +62,12 @@ const BookingDetails = () => {
         <div className="booking_details_section">
           <FontAwesomeIcon icon={faCalendar} className="booking_details_icon" />
           <div className="booking_subsection">
-            <p className="booking_category_name">Created on: </p>
-            <p className="booking_category_value">{booking.created}</p>
+            <p className="booking_category_name">
+              This booking was created on:
+            </p>
+            <p className="booking_category_value">
+              {booking.created.slice(0, 10)}
+            </p>
           </div>
         </div>
 
@@ -67,8 +78,12 @@ const BookingDetails = () => {
               className="booking_details_icon"
             />
             <div className="booking_subsection">
-              <p className="booking_category_name">Edited on: </p>
-              <p className="booking_category_value">{booking.edited}</p>
+              <p className="booking_category_name">
+                This booking was edited on:
+              </p>
+              <p className="booking_category_value">
+                {booking.edited.slice(0, 10)}
+              </p>
             </div>
           </div>
         ) : null}
