@@ -1,5 +1,8 @@
 # Holidaze
 
+![image description](main/holidaze_promo_image.png)
+
+
 ## Project Process
 
 I started the project by setting up a plan for what parts of the website that was needed. Then I plotted them into a Trello board. This way I could plan out the time needed to complete each part and space the work out evenly over the period of the Exam.
