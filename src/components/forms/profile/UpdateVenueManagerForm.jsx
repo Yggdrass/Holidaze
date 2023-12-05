@@ -2,10 +2,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProfilesUrl } from "../../../constants/Url";
-import { save } from "../../storage/save";
+import { save } from "../../../storage/save";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
-import { accessToken } from "../../storage/profile/accessToken";
-import { ProfileName, VenueManager } from "../../storage/profile/profile";
+import { accessToken } from "../../../storage/profile/accessToken";
+import { ProfileName, VenueManager } from "../../../storage/profile/profile";
 
 const UpdateVenueManagerForm = () => {
   const [venueManager, setVenueManager] = useState(VenueManager);

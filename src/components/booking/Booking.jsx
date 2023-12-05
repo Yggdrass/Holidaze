@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BookingsUrl } from "../../constants/Url";
-import { save } from "../storage/save";
+import { save } from "../../storage/save";
 import BookingDetails from "./BookingDetails";
 import UpdateBookingModal from "../modals/venue_&_booking/UpdateBookingModal";
 import DeleteBooking from "./DeleteBooking";
-import { accessToken } from "../storage/profile/accessToken";
+import { accessToken } from "../../storage/profile/accessToken";
 
 const Booking = () => {
   const [booking, setBooking] = useState("");

@@ -1,4 +1,4 @@
-import "./Profile.css";
+import "./Profile.modules.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUser } from "@fortawesome/free-regular-svg-icons";
 import UpdateAvatarModal from "../../components/modals/auth_&_profile/UpdateAvatarModal";
@@ -12,8 +12,8 @@ import {
   ProfileEmail,
   ProfileName,
   VenueManager,
-} from "../../components/storage/profile/profile";
-import { accessToken } from "../../components/storage/profile/accessToken";
+} from "../../storage/profile/profile";
+import { accessToken } from "../../storage/profile/accessToken";
 
 const ProfilePage = () => {
   console.log("auth token: ", accessToken);

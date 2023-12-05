@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import MainLoggedIn from "../../components/layout/MainLoggedIn";
 import MainLoggedOut from "../../components/layout/MainLoggedOut";
-import { accessToken } from "../../components/storage/profile/accessToken";
-import "./Home.css";
+import { accessToken } from "../../storage/profile/accessToken";
+import "./Home.modules.css";
 
 const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

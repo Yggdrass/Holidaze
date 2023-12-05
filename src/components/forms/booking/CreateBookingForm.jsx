@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { BookingsUrl } from "../../../constants/Url";
-import { load } from "../../storage/load";
+import { load } from "../../../storage/load";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { accessToken } from "../../storage/profile/accessToken";
-import { ProfileName } from "../../storage/profile/profile";
+import { accessToken } from "../../../storage/profile/accessToken";
+import { ProfileName } from "../../../storage/profile/profile";
 
 const CreateBookingForm = () => {
   const [dateFrom, setDateFrom] = useState("");

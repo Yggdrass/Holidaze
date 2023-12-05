@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { VenuesUrl } from "../../constants/Url";
-import { save } from "../../components/storage/save";
+import { save } from "../../storage/save";
 import VenueInfo from "../../components/venue_details/VenueInfo";
 import VenueMeta from "../../components/venue_details/VenueMeta";
 import VenueMedia from "../../components/venue_details/VenueMedia";
 import CreateBookingModal from "../../components/modals/venue_&_booking/CreateBookingModal";
 import VenueCalendar from "../../components/venue_details/VenueCalendar";
-import { accessToken } from "../../components/storage/profile/accessToken";
+import { accessToken } from "../../storage/profile/accessToken";
 import { ProfileEmail, VenueManager } from "../../storage/profile/profile";
 import UpdateVenueModal from "../../components/modals/venue_&_booking/UpdateVenueModal";
 import DeleteVenue from "../../components/venue_details/DeleteVenue";

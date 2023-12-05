@@ -1,4 +1,4 @@
-import "../../pages/venues/Venues.css";
+import "../../pages/venues/Venues.modules.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";

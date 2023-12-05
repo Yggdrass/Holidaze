@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { ProfilesUrl } from "../../constants/Url";
 import VenueBookingCard from "../cards/VenueBookingCard";
-import { accessToken } from "../storage/profile/accessToken";
-import { ProfileName } from "../storage/profile/profile";
+import { accessToken } from "../../storage/profile/accessToken";
+import { ProfileName } from "../../storage/profile/profile";
 
 const MyBookings = () => {
   const [bookings, setBookings] = useState([]);

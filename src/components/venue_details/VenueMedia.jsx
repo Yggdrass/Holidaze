@@ -1,4 +1,4 @@
-import { load } from "../storage/load";
+import { load } from "../../storage/load";
 
 const VenueMedia = () => {
   const venue = load("venue_details");
