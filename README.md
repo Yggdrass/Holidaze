@@ -21,3 +21,25 @@ I moved the components into a components folder and structurized them into other
 I had alot of trouble building the calendar and making iot possible to set the dates from the venues booking, so the user can see the avaliable booking dates. I tried to get the dateFrom and dateTo from the bookings, set them in a range function and then match themup with the calendars dates, and then the dates that match would be disabled. I only managed to show the bookings with dates on the venue details page and disable dates prior to the current date. I have never in my time at Noroff been tought how to build and use a calendar and I tried alot of different variations onliune, but nothing worked and the last one I implemented was one that was provided to my be a teacher. So I didn't manage to implement this feature correctly as I have never done it before and the docs on Ant Design was impossible to understand. So I did the next best thing, and that is what you can see on the venue details page.
 
 I also had lots of issues trying to host the website on Netlify or Github pages. I tried to follow a guide from Noroff from js-frameworks on how to host on netlify but it didn't work.
+
+
+## How to set up locally
+
+To set up and test out the website locally on your desktop, click the code-button and open the project with gitthub desktop. Then you clone the project to your pc and open it up in VsCode or another coding app your use. You might need to do "npm i", before you can view the website locally in your browser. After that you just type and execute "npm run dev" and then click the localhost link that you get in the terminal.
+
+Once the website is up in your browser, you need to register first. You can only register by using a @stud.noroff.no email. You don't need an official one, so feelfree to create your own. When you register you can choose to be a venue manager or not, by ticking the box for that in the register form. You can also change your role once you are logged in, by going to your profile page and press update venuemanager button.
+
+
+## Links
+
+Prototypes:
+iPad - https://xd.adobe.com/view/f189cb20-369a-4fdc-8120-7babfc10e468-a4da/
+phone - https://xd.adobe.com/view/9e98636e-e487-4f4c-86e1-ddfff4d5ddb2-cbcb/
+desktop - https://xd.adobe.com/view/0d88e179-c880-491c-a2de-25361bba13ef-58db/
+
+style guide - https://xd.adobe.com/view/b1a6dae5-e3ce-4837-8bee-72844e3fc460-e4f5/
+
+
+Gantt chart - https://trello.com/b/RQoZEvgG/holidaze-project-exam-2
+
+Kanban board - https://xd.adobe.com/view/fc330ee0-e56b-45b8-9cf4-342b5cf5776b-a960/
