@@ -15,7 +15,7 @@ const UpdateAvatarModal = () => {
   return (
     <div>
       <button
-        className="button_green btn_modal login_button_home"
+        className="button_green btn_modal update_avatar_button"
         onClick={toggleAvatarModal}
       >
         update avatar

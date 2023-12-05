@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { load } from "../storage/load";
-import "../../pages/venueDetails/VenueDetails.css";
+import "../../pages/venue_details/VenueDetails.css";
 
 const VenueMeta = () => {
   const venue = load("venue_details");

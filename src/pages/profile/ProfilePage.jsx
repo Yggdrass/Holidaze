@@ -36,15 +36,15 @@ const ProfilePage = () => {
     return (
       <div className="profile_info">
         <div className="info_block">
-          <FontAwesomeIcon icon={faUser} className="profile_icon" />
+          <FontAwesomeIcon icon={faUser} />
           <p className="info_block_text">{profileName}</p>
         </div>
         <div className="info_block">
-          <FontAwesomeIcon icon={faEnvelope} className="profile_icon" />
+          <FontAwesomeIcon icon={faEnvelope} />
           <p className="info_block_text">{profileEmail}</p>
         </div>
         <div className="info_block">
-          <FontAwesomeIcon icon={faUserTie} className="profile_icon" />
+          <FontAwesomeIcon icon={faUserTie} />
           <p className="info_block_text">
             {venueManager ? "is a venue manager" : "is not a venue manager"}
           </p>

@@ -1,7 +1,7 @@
 .main_profilePage {
   background-image: url("../../../public/assets/main_loggedIn_background.png");
   height: 100%;
-  width: 100vw;
+  width: 100%;
   background-size: contain;
   display: flex;
   flex-direction: column;
@@ -19,8 +19,7 @@
   align-items: center;
   background-color: var(--white);
   padding: 6em 30em;
-  max-width: 90%;
-  margin: 0 auto;
+  max-width: 100%;
 }
 
 .profile_info {
@@ -40,7 +39,7 @@
 }
 
 .info_block_text {
-  max-width: 40ch;
+  max-width: 16ch;
   text-align: middle;
 }
 
@@ -72,22 +71,95 @@
 }
 
 @media (max-width: 475px) {
+  .avatar {
+    max-width: 20em;
+  }
+
+  div .info_block p {
+    font-size: 1rem;
+  }
+
+  .profilePageHeader {
+    font-size: 0.5rem;
+  }
 }
 
 @media (max-width: 640px) {
+  .info_block {
+    flex-direction: column;
+  }
+
+  .myVenues_compontent,
+  .myBookings_compontent {
+    max-width: 15em;
+  }
 }
 
 @media (max-width: 768px) {
+  .profilePageHeader {
+    font-size: 5rem;
+  }
+
+  .myVenues_container,
+  .myBookings_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-@media (max-width: 768px), (orientation: landscape) {
+@media (max-width: 780px), (orientation: landscape) {
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 970px) {
+  .myBookings_header,
+  .myVenues_header {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .myVenues_compontent,
+  .myBookings_compontent {
+    max-width: 10em;
+  }
+
+  div .info_block p {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .profile_info_container {
+    padding: 0;
+  }
+
+  .myVenues_container,
+  .myBookings_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1350px) {
+  .myVenues_container,
+  .myBookings_container {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto;
+  }
+
+  .profile_info_container {
+    flex-direction: column;
+  }
 }
 
-@media (min-width: 1536px) {
+@media (max-width: 1980px) {
+  .info_block,
+  .info_block p {
+    font-size: 3rem;
+  }
+
+  .profile_info_container {
+    padding-top: 5rem;
+    justify-content: center;
+  }
 }

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 
-const NavLinksLoggedIn = () => {
+const NavLinksLoggedIn = (props) => {
   const navigate = useNavigate();
 
   const animtateFrom = { opacity: 0, y: -40 };

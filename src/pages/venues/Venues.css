@@ -126,9 +126,6 @@
   }
 }
 
-@media (max-width: 640px) {
-}
-
 @media (max-width: 768px), (orientation: landscape) {
   .search_results {
     display: grid;
@@ -157,7 +154,7 @@
 
 @media (max-width: 1440px) {
   .search_results {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

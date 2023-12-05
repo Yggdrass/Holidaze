@@ -13,8 +13,10 @@
   margin: 0 auto;
   background-color: var(--white);
   gap: 2rem;
-  align-content: flex-start;
+  align-items: center;
+  text-align: left;
   max-width: 90vw;
+  padding: 2rem 1rem;
 }
 
 .booking_subsection {
@@ -39,4 +41,37 @@
 
 .main_booking_details {
   background-image: url("../../../public/assets/main_loggedIn_background.png");
+}
+
+@media (max-width: 1200px) {
+  .booking_category_value,
+  .booking_category_name {
+    font-size: 2rem;
+  }
+
+  .booking_details_title {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 1080px) {
+  .booking_category_value,
+  .booking_category_name {
+    font-size: 1.5rem;
+  }
+
+  .booking_details_title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .booking_category_value,
+  .booking_category_name {
+    font-size: 1rem;
+  }
+
+  .booking_details_title {
+    font-size: 2rem;
+  }
 }

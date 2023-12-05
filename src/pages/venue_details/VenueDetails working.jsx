@@ -10,21 +10,32 @@ import VenueMedia from "../../components/venue_details/VenueMedia";
 import CreateBookingModal from "../../components/modals/CreateBookingModal";
 import VenueCalendar from "../../components/venue_details/VenueCalendar";
 
-const Venue = () => {
+const VenueDetails = () => {
   const [venue, setVenue] = useState([]);
   console.log("venue: ", venue);
   const params = useParams();
-  console.log("Params: ", params);
+  //console.log("Params: ", params);
   const paramsId = params.id;
-  console.log("Params ID: ", paramsId);
+  //console.log("Params ID: ", paramsId);
   const profile = load("profile");
-  console.log("Profile: ", profile);
-  const profileEmail = profile.email;
-  console.log("Profile Email: ", profileEmail);
-  const profileVenueManager = profile.venueManager;
-  console.log("profileVenueManager: ", profileVenueManager);
-  const venueOwner = venue.owner;
-  console.log("Venue Owner: ", venueOwner);
+  //console.log("Profile: ", profile);
+  const AuthToken = profile.accessToken;
+
+  const venueBookings = venue.bookings;
+  console.log("venueBookings: ", venueBookings);
+
+  // const bookingDates = venueBookings.dateFrom;
+  // console.log("Date From: ", dateFrom);
+
+  // const bookingsList = venueBookings.map((booking, index) => {
+  //   <li key={index}>{booking}</li>;
+  // });
+  // console.log("Bookings List: ", bookingsList);
+
+  // // const renderBookingsDateFrom = venueBookings
+  // //   .slice(0, 10)
+  // //   .map((booking) => booking.dateFrom);
+  // // console.log("render Bookings Date From: ", renderBookingsDateFrom);
 
   async function fetchVenue() {
     const VenueDetailsUrl = Venues_Details_Url;
@@ -36,21 +47,22 @@ const Venue = () => {
     const fetchOptions = {
       method: "GET",
       headers: {
+        Authorization: `Bearer ${AuthToken}`,
         "content-type": "application/json",
       },
     };
 
     try {
       const response = await fetch(FetchVenueDetails, fetchOptions);
-      console.log("Response :", response);
+      //console.log("Response :", response);
 
       const result = await response.json();
-      console.log("Result:", result);
+      //console.log("Result:", result);
 
       if (response.ok) {
         setVenue(result);
         save("venue_details", result);
-        console.log("Result Success:", result);
+        //console.log("Result Success:", result);
       } else {
         console.log("Result Error:");
       }
@@ -78,9 +90,9 @@ const Venue = () => {
       profileVenueManager
       <CreateBookingModal />
       {/* <MyBookings /> */}
-      <VenueCalendar />
+      <VenueCalendar bookingDates={{ from: "dateFrom", to: "dateTo" }} />
     </main>
   );
 };
 
-export default Venue;
+export default VenueDetails;

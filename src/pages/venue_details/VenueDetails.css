@@ -26,6 +26,7 @@
   flex-direction: row;
   align-items: left;
   gap: 6rem;
+  padding-top: 2rem;
 }
 
 .venue_stars,
@@ -34,15 +35,17 @@
   display: inherit;
   gap: 1.5rem;
   align-items: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: italic;
   text-transform: uppercase;
 }
 
 .venue_details_card {
+  display: flex;
+  flex-direction: column;
   background-color: var(--white);
   width: 90%;
-  margin: 0 auto;
+  margin: 5rem auto;
   padding: 0 3rem;
 }
 
@@ -66,9 +69,6 @@
 
 .venue_description {
   max-width: 50%;
-}
-
-.venue_description {
   font-size: 4rem;
 }
 
@@ -92,4 +92,79 @@
   gap: 2rem;
   font-size: 2rem;
   text-transform: uppercase;
+}
+
+.venue_name {
+  font-size: clamp(4rem, 4vw + 1rem, 7rem);
+  text-transform: uppercase;
+}
+
+@media (max-width: 400px) {
+  .venue_description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .carousel_wrapper img {
+    max-width: 40rem;
+  }
+}
+
+@media (max-width: 1080px) {
+  .venue_stars,
+  .venue_price,
+  .venue_maxGuests {
+    font-size: 1rem;
+  }
+
+  .venue_description {
+    max-width: 50%;
+    font-size: 3rem;
+  }
+
+  .carousel_wrapper img {
+    max-width: 20rem;
+  }
+
+  .info_group_1 {
+    flex-direction: column;
+    align-items: left;
+    margin: 0 auto;
+    gap: 2rem;
+  }
+
+  .venue_meta {
+    flex-direction: column;
+    align-items: left;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .venue_media_description {
+    display: flex;
+    flex-direction: column;
+    margin: 4rem auto;
+  }
+}
+
+@media (max-width: 1200px) {
+  .venue_stars,
+  .venue_price,
+  .venue_maxGuests {
+    font-size: 1.5rem;
+  }
+
+  .venue_media_description {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1700px) {
+  .venue_stars,
+  .venue_price,
+  .venue_maxGuests {
+    font-size: 1.5rem;
+  }
 }

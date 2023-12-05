@@ -15,7 +15,7 @@ const UpdateVenueManagerModal = () => {
   return (
     <div>
       <button
-        className="button_green btn_modal login_button_home"
+        className="button_green btn_modal update_venueManagerRole_button"
         onClick={toggleVenueManagerModal}
       >
         update venue manager

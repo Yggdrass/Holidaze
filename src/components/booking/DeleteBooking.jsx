@@ -42,7 +42,14 @@ const DeleteBooking = () => {
     }
   }
 
-  return <button onClick={deleteRequest}>Delete Booking</button>;
+  return (
+    <button
+      className="button_purple delete_booking_button"
+      onClick={deleteRequest}
+    >
+      Delete Booking
+    </button>
+  );
 };
 
 export default DeleteBooking;

@@ -69,9 +69,10 @@ const Booking = () => {
   return (
     <main className="main_booking_details">
       <BookingDetails />
-      fixed beyond This
-      <UpdateBookingModal />
-      <DeleteBooking />
+      <div className="booking_details_buttons_container">
+        <UpdateBookingModal />
+        <DeleteBooking />
+      </div>
     </main>
   );
 };
