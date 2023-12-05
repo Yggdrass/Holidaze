@@ -56,7 +56,8 @@ button,
 }
 
 .login_button_home,
-.register_button_home {
+.register_button_home,
+.updateVenueModal_button {
   font-size: min(2rem, 3rem);
 }
 
@@ -83,7 +84,6 @@ nav ul li .register_button_home {
 
 .update_delete_venue_buttons {
   display: flex;
-
   gap: 5rem;
 }
 

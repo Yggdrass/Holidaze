@@ -5,7 +5,7 @@ import {
   faUser,
 } from "@fortawesome/free-regular-svg-icons";
 import { faLock, faUserTie } from "@fortawesome/free-solid-svg-icons";
-import { RegisterUrl } from "../../constants/Url";
+import { RegisterUrl } from "../../../constants/Url";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -16,14 +16,11 @@ const RegisterForm = () => {
   const [avatar, setAvatar] = useState("");
   const [venueManager, setVenueManager] = useState(false);
 
-  const registerUrl = RegisterUrl;
-
   const navigate = useNavigate();
 
   const handleSubmitRegisterForm = (e) => {
     e.preventDefault();
     let regobj = { name, email, password, avatar, venueManager };
-    //console.log("Register Object :", regobj);
 
     async function registerUser() {
       const postData = {
@@ -33,11 +30,8 @@ const RegisterForm = () => {
       };
 
       try {
-        const response = await fetch(registerUrl, postData);
-        console.log("Response :", response);
-
+        const response = await fetch(RegisterUrl, postData);
         const result = await response.json();
-        console.log("Result :", JSON.stringify(result));
 
         if (response.ok) {
           alert(
@@ -45,7 +39,7 @@ const RegisterForm = () => {
           );
           window.location.reload(true);
         } else {
-          alert("Error! Login failed!");
+          alert("Error! You failed to Register!");
         }
       } catch (error) {
         console.log("Catch Error Register: ", error);
@@ -71,7 +65,9 @@ const RegisterForm = () => {
             placeholder="Username"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           />
+          <span className="input_error"></span>
         </div>
 
         {/*---- Avatar Input ----*/}
@@ -102,7 +98,9 @@ const RegisterForm = () => {
             placeholder="name@stud.noroff.no"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
+          <span className="input_error"></span>
         </div>
 
         {/*---- Check Venue Manager role ----*/}
@@ -134,9 +132,12 @@ const RegisterForm = () => {
             className="form-control"
             id="floatingPassword"
             placeholder="Password"
+            pattern="{8,}"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
+          <span className="input_error"></span>
         </div>
 
         <button type="submit" className="button_green register_form_submit">

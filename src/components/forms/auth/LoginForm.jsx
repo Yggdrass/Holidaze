@@ -2,22 +2,18 @@ import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { LoginUrl } from "../../constants/Url";
+import { LoginUrl } from "../../../constants/Url";
 import { useNavigate } from "react-router-dom";
-import { save } from "../storage/save";
+import { save } from "../../storage/save";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
-
-  const loginUrl = LoginUrl;
 
   const handleSubmitLoginForm = (e) => {
     e.preventDefault();
     let loginobj = { email, password };
-    console.log("Login Object :", loginobj);
 
     async function loginUser() {
       const postData = {
@@ -27,20 +23,10 @@ const LoginForm = () => {
       };
 
       try {
-        const response = await fetch(loginUrl, postData);
-        //console.log("Response :", response);
-
+        const response = await fetch(LoginUrl, postData);
         const result = await response.json();
-        //console.log("Result :", result);
-
         const accessToken = result.accessToken;
-        //console.log("AccessToken :", accessToken);
-
         save("Holidaze_Login_Token", accessToken);
-        console.log(
-          "Stored Token LocalStorage :",
-          localStorage.getItem("Holidaze_Login_Token")
-        );
 
         if (response.ok) {
           alert(`${result.name} You have successfully logged in!`);
@@ -48,7 +34,7 @@ const LoginForm = () => {
           navigate(`/`);
           window.location.reload(true);
         } else {
-          alert("Error! Login failed!");
+          alert("Error! You failed to login!");
         }
       } catch (error) {
         console.log("Catch Error Login: ", error);
@@ -73,7 +59,9 @@ const LoginForm = () => {
             placeholder="name@stud.noroff.no"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
+          <span className="input_error"></span>
         </div>
 
         {/*---- Password Input ----*/}
@@ -89,7 +77,9 @@ const LoginForm = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
+          <span className="input_error"></span>
         </div>
 
         <button type="submit" className="button_green login_form_submit">

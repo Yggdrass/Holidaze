@@ -1,5 +1,5 @@
-import LoginModal from "../modals/LoginModal";
-import RegisterModal from "../modals/RegisterModal";
+import LoginModal from "../modals/auth_&_profile/LoginModal";
+import RegisterModal from "../modals/auth_&_profile/RegisterModal";
 import "../../pages/home/Home";
 
 const MainLoggedOut = () => {

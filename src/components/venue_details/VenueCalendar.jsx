@@ -1,13 +1,10 @@
 import { useState } from "react";
 import dayjs from "dayjs";
 import { Alert, Calendar } from "antd";
-import { load } from "../storage/load";
 
-const VenueCalendar = () => {
+const VenueCalendar = ({ DateFrom, DateTo }) => {
   const [value, setValue] = useState(() => dayjs(new Date()));
-  console.log("Value: ", value);
   const [selectedValue, setSelectedValue] = useState(() => dayjs(""));
-  console.log("Selecetd Value: ", selectedValue);
   const onSelect = (newValue) => {
     setValue(newValue);
     setSelectedValue(newValue);
@@ -16,21 +13,8 @@ const VenueCalendar = () => {
     setValue(newValue);
   };
 
-  const venue = load("venue_details");
-  console.log("venue: ", venue);
-
-  const venueBookings = venue.bookings;
-  console.log("venueBookings: ", venueBookings);
-
-  const renderBookingsDateFrom = venueBookings.map((booking) =>
-    booking.dateFrom.slice(0, 10)
-  );
-  console.log("render Bookings Date From: ", renderBookingsDateFrom);
-
-  const renderBookingsDateTo = venueBookings.map((booking) =>
-    booking.dateTo.slice(0, 10)
-  );
-  console.log("render Bookings Date To: ", renderBookingsDateTo);
+  console.log("DateFrom: ", DateFrom);
+  console.log("DateTo: ", DateTo);
 
   const range = (start, end) => {
     const result = [];
@@ -41,21 +25,23 @@ const VenueCalendar = () => {
   };
 
   const bookedDates = () => ({
-    disabledDates: () => range(renderBookingsDateFrom, renderBookingsDateTo),
+    disabledDates: () => range(DateFrom, DateTo),
   });
 
   return (
     <>
+      <h2 className="calendar_title">Calendar</h2>
       <Calendar
+        className="calendar"
         value={value}
         format="YYYY-MM-DD"
         onSelect={onSelect}
         onPanelChange={onPanelChange}
         disabledDate={(date) => {
-          if (new Date(date).getDate() > 15) {
+          if (new Date(date).getDate() === bookedDates) {
             return true;
-          } else {
-            return false;
+          } else if (new Date(date).getDate() < new Date().getDate()) {
+            return true;
           }
         }}
       />

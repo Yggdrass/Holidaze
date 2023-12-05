@@ -1,76 +1,66 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Venues_Details_Url } from "../../constants/Url";
+import { VenuesUrl } from "../../constants/Url";
 import { save } from "../../components/storage/save";
-import { load } from "../../components/storage/load";
 import VenueInfo from "../../components/venue_details/VenueInfo";
 import VenueMeta from "../../components/venue_details/VenueMeta";
-import ShowUpdateDelete from "../../components/venue_details/ShowUpdateDelete";
 import VenueMedia from "../../components/venue_details/VenueMedia";
-import CreateBookingModal from "../../components/modals/CreateBookingModal";
+import CreateBookingModal from "../../components/modals/venue_&_booking/CreateBookingModal";
 import VenueCalendar from "../../components/venue_details/VenueCalendar";
+import { accessToken } from "../../components/storage/profile/accessToken";
+import { ProfileEmail, VenueManager } from "../../storage/profile/profile";
+import UpdateVenueModal from "../../components/modals/venue_&_booking/UpdateVenueModal";
+import DeleteVenue from "../../components/venue_details/DeleteVenue";
+import VenueBookings from "../../components/venue_details/VenueBookings";
 import "./VenueDetails.css";
 
 const VenueDetails = () => {
   const [venue, setVenue] = useState([]);
   console.log("venue: ", venue);
   const params = useParams();
-  //console.log("Params: ", params);
   const paramsId = params.id;
-  //console.log("Params ID: ", paramsId);
-  const profile = load("profile");
-  //console.log("Profile: ", profile);
-  const AuthToken = profile.accessToken;
 
-  const profileEmail = profile.email;
-  //console.log("Profile Email: ", profileEmail);
-  const profileVenueManager = profile.venueManager;
-  //console.log("profileVenueManager: ", profileVenueManager);
-  const venueOwner = venue.owner;
-  //console.log("Venue Owner: ", venueOwner);
+  const [venueOwner, setVenueOwner] = useState([]);
+  console.log("venueOwner: ", venueOwner);
 
-  const venueBookings = venue.bookings;
+  const [venueBookings, setVenueBookings] = useState([]);
   console.log("venueBookings: ", venueBookings);
 
-  // const bookingDates = venueBookings.dateFrom;
-  // console.log("Date From: ", dateFrom);
+  const venueOwnerEmail = venueOwner.email;
+  console.log("venue owner Email:", venueOwnerEmail);
 
-  // const bookingsList = venueBookings.map((booking, index) => {
-  //   <li key={index}>{booking}</li>;
-  // });
-  // console.log("Bookings List: ", bookingsList);
+  console.log("venue media:", venue.media);
 
-  // // const renderBookingsDateFrom = venueBookings
-  // //   .slice(0, 10)
-  // //   .map((booking) => booking.dateFrom);
-  // // console.log("render Bookings Date From: ", renderBookingsDateFrom);
+  const DateFrom = venueBookings.map((booking) =>
+    booking.dateFrom.slice(0, 10)
+  );
+  console.log("render Bookings Date From: ", DateFrom);
+
+  const DateTo = venueBookings.map((booking) => booking.dateTo.slice(0, 10));
+  console.log("render Bookings Date To: ", DateTo);
 
   async function fetchVenue() {
-    const VenueDetailsUrl = Venues_Details_Url;
-    console.log("VenueUrl: ", VenueDetailsUrl);
     const FetchVenueDetails =
-      VenueDetailsUrl + paramsId + "?_owner=true&_bookings=true";
+      VenuesUrl + paramsId + "?_owner=true&_bookings=true";
     console.log("FetchVenueDetails: ", FetchVenueDetails);
 
     const fetchOptions = {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${AuthToken}`,
+        Authorization: `Bearer ${accessToken}`,
         "content-type": "application/json",
       },
     };
 
     try {
       const response = await fetch(FetchVenueDetails, fetchOptions);
-      //console.log("Response :", response);
-
       const result = await response.json();
-      //console.log("Result:", result);
 
       if (response.ok) {
         setVenue(result);
+        setVenueOwner(result.owner);
+        setVenueBookings(result.bookings);
         save("venue_details", result);
-        //console.log("Result Success:", result);
       } else {
         console.log("Result Error:");
       }
@@ -83,24 +73,50 @@ const VenueDetails = () => {
     fetchVenue();
   }, []);
 
+  const ShowButtons = () => {
+    if (VenueManager && ProfileEmail === venueOwnerEmail) {
+      return (
+        <div className="update_delete_venue_buttons">
+          <DeleteVenue />
+          <UpdateVenueModal Venue={venue} />
+        </div>
+      );
+    } else if (VenueManager && ProfileEmail !== venueOwnerEmail) {
+      return (
+        <div>
+          This is not your venue, you are not authorized to edit this venue!
+        </div>
+      );
+    } else if (!VenueManager) {
+      return null;
+    }
+  };
+
   return (
     <main className="venue_details_main">
       <div className="venue_details_card">
         <div>
           <h1 className="venue_name">{venue.name}</h1>
           <div className="venue_details_button_container">
-            <ShowUpdateDelete />
+            <ShowButtons />
             <CreateBookingModal />
           </div>
         </div>
-        <VenueInfo />
+        <VenueInfo
+          Venue={venue}
+          venueRating={venue.rating}
+          venuePrice={venue.price}
+          venueMaxGuests={venue.maxGuests}
+          venueOwnerName={venueOwner.name}
+        />
         <div className="venue_media_description">
           <VenueMedia />
           <p className="venue_description">venue.description</p>
         </div>
         <VenueMeta />
       </div>
-      <VenueCalendar bookingDates={{ from: "dateFrom", to: "dateTo" }} />
+      <VenueCalendar DateFrom={DateFrom} DateTo={DateTo} />
+      <VenueBookings />
     </main>
   );
 };

@@ -42,7 +42,10 @@ body.active-modal {
 
 .modal_content_updateAvatar,
 .modal_content_updateVenueManager,
-.modal_content_createVenue {
+.modal_content_createVenue,
+.modal_content_updateBooking,
+.modal_content_createBooking,
+.modal_content_updateVenue {
   position: absolute;
   top: 50%;
   left: 50%;

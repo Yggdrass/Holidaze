@@ -1,5 +1,7 @@
 import { useState } from "react";
-import UpdateAvatarForm from "../forms/UpdateAvatarForm";
+import UpdateAvatarForm from "../../forms/profile/UpdateAvatarForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 const UpdateAvatarModal = () => {
   const [avatarModal, setAvatarModal] = useState(false);
@@ -27,6 +29,12 @@ const UpdateAvatarModal = () => {
           <div className="modal_content_updateAvatar">
             <h1 className="h1_avatarModal_title">update avatar</h1>
             <UpdateAvatarForm />
+            <button
+              className="close_modal_button button_purple"
+              onClick={toggleAvatarModal}
+            >
+              <FontAwesomeIcon icon={faX} />
+            </button>
           </div>
         </div>
       )}

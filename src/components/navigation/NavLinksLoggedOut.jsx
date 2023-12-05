@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import LoginModal from "../modals/LoginModal";
-import RegisterModal from "../modals/RegisterModal";
+import LoginModal from "../modals/auth_&_profile/LoginModal";
+import RegisterModal from "../modals/auth_&_profile/RegisterModal";
 
 const NavLinksLoggedOut = () => {
   const animtateFrom = { opacity: 0, y: -40 };

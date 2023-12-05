@@ -13,13 +13,8 @@ import "../../pages/venue_details/VenueDetails.css";
 
 const VenueMeta = () => {
   const venue = load("venue_details");
-  //console.log("Venue Info: ", venue);
-
   const venueMeta = venue.meta;
-  //console.log("Venue Meta: ", venueMeta);
-
   const venueLocation = venue.location;
-  //console.log("Venue Location: ", venueLocation);
 
   return (
     <div className="venue_meta">

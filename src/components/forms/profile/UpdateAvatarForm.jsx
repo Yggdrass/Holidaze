@@ -2,35 +2,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ProfilesUrl } from "../../constants/Url";
-import { load } from "../storage/load";
-import { save } from "../storage/save";
+import { ProfilesUrl } from "../../../constants/Url";
+import { save } from "../../storage/save";
+import { ProfileName } from "../../storage/profile/profile";
+import { accessToken } from "../../storage/profile/accessToken";
 
 const UpdateAvatarForm = () => {
   const [avatar, setAvatar] = useState("");
-  const profile = load("profile");
-  console.log("Profile:", profile);
-  const profileName = profile.name;
-  //console.log("Profile Name:", profileName);
-
-  const AuthToken = profile.accessToken;
-  //console.log("Authenticate Token: ", AuthToken);
-
-  const updateAvatarUrl = ProfilesUrl + profileName + "/media";
-  console.log("Update Avatar Url: ", updateAvatarUrl);
-
+  const updateAvatarUrl = ProfilesUrl + ProfileName + "/media";
   const navigate = useNavigate();
 
   const HandleUpdateAvatarForm = (e) => {
     e.preventDefault();
     let regobj = { avatar };
-    console.log("Register Object :", regobj);
 
     async function updateAvatar() {
       const postData = {
         method: "PUT",
         headers: {
-          Authorization: `Bearer ${AuthToken}`,
+          Authorization: `Bearer ${accessToken}`,
           "content-type": "application/json",
         },
         body: JSON.stringify(regobj),
@@ -38,17 +28,11 @@ const UpdateAvatarForm = () => {
 
       try {
         const response = await fetch(updateAvatarUrl, postData);
-        console.log("Response :", response);
-
         const result = await response.json();
-        console.log("Result :", result);
 
         if (response.ok) {
-          console.log("avatar:", avatar);
           save("profile", result);
-          console.log(profile);
-          alert(`${result.name} You have successfully updated your avatar!`);
-
+          alert(`${ProfileName} You have successfully updated your avatar!`);
           window.location.reload(true);
         } else {
           alert("Error! Failed to update avatar!");

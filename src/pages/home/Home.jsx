@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
-import "./Home.css";
 import MainLoggedIn from "../../components/layout/MainLoggedIn";
 import MainLoggedOut from "../../components/layout/MainLoggedOut";
+import { accessToken } from "../../components/storage/profile/accessToken";
+import "./Home.css";
 
 const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   console.log(isLoggedIn);
-
-  const accessToken = localStorage.getItem("Holidaze_Login_Token");
-  console.log(accessToken);
 
   useEffect(() => {
     if (accessToken) {

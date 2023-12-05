@@ -1,36 +1,22 @@
 import { useEffect, useState } from "react";
 import { save } from "../storage/save";
 import { useParams } from "react-router-dom";
-import { Venues_Details_Url } from "../../constants/Url";
+import { VenuesUrl } from "../../constants/Url";
 import { load } from "../storage/load";
 import VenueBookingCard from "../cards/VenueBookingCard";
+import "../../pages/venue_details/VenueDetails.css";
 
 const VenueBookings = () => {
   const [venue, setVenue] = useState("");
   console.log("venue: "), venue;
-
   const params = useParams();
-
   const profile = load("profile");
-  console.log("Profile:", profile);
   const AuthToken = profile.accessToken;
-  console.log("Authenticate Token: ", AuthToken);
-
   const VenueDetails = load("venue_details");
-  console.log("Venue Details: ", VenueDetails);
-
   const VenueBookings = VenueDetails.bookings;
-  console.log("Venue Bookings: ", VenueBookings);
-
-  //   const bookings = VenueBookings.map(({ booking, index }) => (
-  //     <li key={index}>{booking.dateFrom}</li>
-  //   ));
-  //   console.log("booking: ", bookings);
 
   async function fetchVenue() {
-    const VenueDetailsUrl = Venues_Details_Url;
-    console.log("VenueUrl: ", VenueDetailsUrl);
-    const FetchVenueDetails = VenueDetailsUrl + params.id + "?_bookings=true";
+    const FetchVenueDetails = VenuesUrl + params.id + "?_bookings=true";
     console.log("FetchVenueDetails: ", FetchVenueDetails);
 
     const fetchOptions = {
@@ -51,9 +37,8 @@ const VenueBookings = () => {
       if (response.ok) {
         setVenue(result);
         save("venue_details", result);
-        console.log("Result Success:", result);
       } else {
-        console.log("Result Error:");
+        console.log("Result Error:", result);
       }
     } catch (error) {
       console.log("Catch Error FetchVenue: ", error);
@@ -66,9 +51,16 @@ const VenueBookings = () => {
 
   return (
     <div>
-      <ul>
-        {VenueBookings.map((item) => (
-          <VenueBookingCard key={item.id} item={item} />
+      <ul className="venue_details_bookings_container">
+        {VenueBookings.map((booking) => (
+          <VenueBookingCard
+            key={booking.id}
+            item={booking}
+            bookingId={booking.id}
+            guests={booking.guests}
+            dateFrom={booking.dateFrom.slice(0, 10)}
+            dateTo={booking.dateTo.slice(0, 10)}
+          />
         ))}
       </ul>
     </div>

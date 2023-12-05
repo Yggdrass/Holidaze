@@ -2,7 +2,7 @@
 .main-loggedOut {
   min-height: 100vh;
   max-width: 100%;
-
+  flex-grow: 1;
   background-size: contain;
   display: flex;
   flex-direction: column;

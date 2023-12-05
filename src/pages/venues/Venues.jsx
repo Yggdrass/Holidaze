@@ -2,10 +2,9 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import VenueCard from "../../components/cards/VenueCard";
 import { useEffect, useState } from "react";
-import { All_Venues_Url } from "../../constants/Url";
+import { VenuesUrl } from "../../constants/Url";
 
 const Venues = () => {
-  const AllVenuesUrl = All_Venues_Url;
   const [venues, setVenues] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -13,7 +12,6 @@ const Venues = () => {
   const filteredVenues = venues.filter((venue) =>
     venue.name.toLowerCase().includes(searchText.toLocaleLowerCase())
   );
-  console.log("Filtered venues: ", venues);
 
   const handleChange = (event) => {
     setSearchText(event.target.value);
@@ -21,27 +19,50 @@ const Venues = () => {
   };
 
   useEffect(() => {
-    fetch(AllVenuesUrl).then((res) =>
+    fetch(VenuesUrl).then((res) =>
       res.json().then((json) => {
         setVenues(json);
-        //console.log("setVenues:", json);
       })
     );
   }, []);
-
-  //console.log("Venues Set:", venues);
 
   const ShowVenues = () => {
     if (filteredVenues.length > 0) {
       return (
         <ul className="search_results">
-          {venues.sort().map((item) => (
-            <VenueCard key={item.id} item={item}></VenueCard>
+          {filteredVenues.sort().map((venue) => (
+            <VenueCard
+              key={venue.id}
+              item={venue}
+              venueId={venue.id}
+              venuePrice={venue.price}
+              venueName={venue.name}
+              venueDescription={venue.description}
+              venueMedia={venue.media}
+            ></VenueCard>
           ))}
         </ul>
       );
+    } else if (isDropdownOpen & (filteredVenues.length > 0)) {
+      return (
+        <ul className="search_results">
+          {filteredVenues.sort().map((venue) => (
+            <VenueCard
+              key={venue.id}
+              item={venue}
+              venueId={venue.id}
+              venuePrice={venue.price}
+              venueName={venue.name}
+              venueDescription={venue.description}
+              venueMedia={venue.media}
+            ></VenueCard>
+          ))}
+        </ul>
+      );
+    } else if (filteredVenues.length === 0 && searchText !== "") {
+      return <p>No venues found</p>;
     } else {
-      <p>No venues found</p>;
+      return null;
     }
   };
 
@@ -64,21 +85,6 @@ const Venues = () => {
         />
       </div>
       <ShowVenues />
-      {isDropdownOpen && filteredVenues.length > 0 ? (
-        <ul className="search_results">
-          {filteredVenues.splice(0, 5).map((item) => (
-            <VenueCard key={item.id} item={item}></VenueCard>
-          ))}
-        </ul>
-      ) : (
-        <ul>
-          {filteredVenues.length === 0 && searchText !== "" ? (
-            <p>No venues found</p>
-          ) : (
-            ""
-          )}
-        </ul>
-      )}
     </main>
   );
 };

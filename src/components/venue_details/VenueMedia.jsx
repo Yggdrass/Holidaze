@@ -2,15 +2,18 @@ import { load } from "../storage/load";
 
 const VenueMedia = () => {
   const venue = load("venue_details");
-  //console.log("Venue: ", venue);
-
   const venueMedia = venue.media;
-  //console.log("Venue Media: ", venueMedia);
 
   return (
     <div className="carousel_wrapper">
-      {venueMedia.map((venueMedia, i) => {
-        return <img src={venueMedia} key={i} />;
+      {venueMedia.map((image, i) => {
+        return (
+          <img
+            src={image}
+            key={i}
+            alt="Images from the location of the venue"
+          />
+        );
       })}
     </div>
   );
