@@ -12,7 +12,7 @@ import { ProfileEmail, VenueManager } from "../../storage/profile/profile";
 import UpdateVenueModal from "../../components/modals/venue_&_booking/UpdateVenueModal";
 import DeleteVenue from "../../components/venue_details/DeleteVenue";
 import VenueBookings from "../../components/venue_details/VenueBookings";
-import "./VenueDetails.css";
+import "./VenueDetails.modules.css";
 
 const VenueDetails = () => {
   const [venue, setVenue] = useState([]);
