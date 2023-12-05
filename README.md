@@ -1,6 +1,6 @@
 # Holidaze
 
-<img src="holidaze_promo_img.png" width="128"/>
+<img src="holidaze_promo_img.png" width="1280"/>
 
 ## Project Process
 
