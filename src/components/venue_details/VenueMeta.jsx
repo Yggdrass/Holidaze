@@ -8,8 +8,8 @@ import {
   faWifi,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { load } from "../storage/load";
-import "../../pages/venue_details/VenueDetails.css";
+import { load } from "../../storage/load";
+import "../../pages/venue_details/VenueDetails.modules.css";
 
 const VenueMeta = () => {
   const venue = load("venue_details");

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { save } from "../storage/save";
+import { save } from "../../storage/save";
 import { useParams } from "react-router-dom";
 import { VenuesUrl } from "../../constants/Url";
-import { load } from "../storage/load";
+import { load } from "../../storage/load";
 import VenueBookingCard from "../cards/VenueBookingCard";
-import "../../pages/venue_details/VenueDetails.css";
+import "../../pages/venue_details/VenueDetails.modules.css";
 
 const VenueBookings = () => {
   const [venue, setVenue] = useState("");

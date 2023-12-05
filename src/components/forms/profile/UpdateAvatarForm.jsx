@@ -3,9 +3,9 @@ import { faImage } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProfilesUrl } from "../../../constants/Url";
-import { save } from "../../storage/save";
-import { ProfileName } from "../../storage/profile/profile";
-import { accessToken } from "../../storage/profile/accessToken";
+import { save } from "../../../storage/save";
+import { ProfileName } from "../../../storage/profile/profile";
+import { accessToken } from "../../../storage/profile/accessToken";
 
 const UpdateAvatarForm = () => {
   const [avatar, setAvatar] = useState("");

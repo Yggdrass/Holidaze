@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { BookingsUrl } from "../../constants/Url";
-import { load } from "../storage/load";
+import { load } from "../../storage/load";
 
 const DeleteBooking = () => {
   const profile = load("profile");

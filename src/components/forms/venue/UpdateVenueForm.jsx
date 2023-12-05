@@ -15,8 +15,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { accessToken } from "../../storage/profile/accessToken";
-import { ProfileName } from "../../storage/profile/profile";
+import { accessToken } from "../../../storage/profile/accessToken";
+import { ProfileName } from "../../../storage/profile/profile";
 
 const UpdateVenueForm = (Venue) => {
   const venue = Venue.Venue;

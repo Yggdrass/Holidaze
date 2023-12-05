@@ -1,7 +1,7 @@
 import { faCalendar, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { load } from "../storage/load";
-import "./Booking.css";
+import { load } from "../../storage/load";
+import "./Booking.modules.css";
 
 const BookingDetails = () => {
   const booking = load("booking_details");

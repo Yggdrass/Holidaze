@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { LoginUrl } from "../../../constants/Url";
 import { useNavigate } from "react-router-dom";
-import { save } from "../../storage/save";
+import { save } from "../../../storage/save";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");

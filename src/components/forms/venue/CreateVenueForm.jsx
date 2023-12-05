@@ -14,8 +14,8 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { accessToken } from "../../storage/profile/accessToken";
-import { ProfileName } from "../../storage/profile/profile";
+import { accessToken } from "../../../storage/profile/accessToken";
+import { ProfileName } from "../../../storage/profile/profile";
 
 const CreateVenueForm = () => {
   const [createdVenue, setCreatedVenue] = useState("");
