@@ -1,6 +1,6 @@
 # Holidaze
 
-![image description](main/holidaze_promo_image.png)
+![image description](main/holidaze_promo_img.png)
 
 
 ## Project Process
