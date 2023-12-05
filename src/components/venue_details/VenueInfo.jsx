@@ -5,34 +5,33 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { load } from "../storage/load";
 
-const VenueInfo = () => {
-  const venue = load("venue_details");
-  //console.log("Venue: ", venue);
-  const venueOwner = venue.owner;
-  //console.log("Venue Owner: ", venueOwner);
-
+const VenueInfo = ({
+  venueRating,
+  venuePrice,
+  venueMaxGuests,
+  venueOwnerName,
+}) => {
   return (
     <div className="info_group_1">
       <p className="venue_stars">
         <FontAwesomeIcon icon={faStar} className="venue_infoGroup1_icon" />
-        rating: {venue.rating}
+        rating: {venueRating}
       </p>
       <p className="venue_price">
         <FontAwesomeIcon
           icon={faMoneyBill1}
           className="venue_infoGroup1_icon"
         />
-        price: {venue.price}
+        price: {venuePrice}
       </p>
       <p className="venue_maxGuests">
         <FontAwesomeIcon icon={faUsers} className="venue_infoGroup1_icon" />
-        max guests: {venue.maxGuests}
+        max guests: {venueMaxGuests}
       </p>
-      <p className="venue_maxGuests">
+      <p className="venue_owner">
         <FontAwesomeIcon icon={faUserTie} className="venue_infoGroup1_icon" />
-        created by: {venueOwner.name}
+        created by: {venueOwnerName}
       </p>
     </div>
   );

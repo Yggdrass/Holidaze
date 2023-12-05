@@ -1,40 +1,26 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ProfilesUrl } from "../../constants/Url";
-import { load } from "../storage/load";
-import { save } from "../storage/save";
+import { ProfilesUrl } from "../../../constants/Url";
+import { save } from "../../storage/save";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
+import { accessToken } from "../../storage/profile/accessToken";
+import { ProfileName, VenueManager } from "../../storage/profile/profile";
 
 const UpdateVenueManagerForm = () => {
-  const profile = load("profile");
-  console.log("Profile:", profile);
-  const profileName = profile.name;
-  //console.log("Profile Name:", profileName);
-  const profileVenueManager = profile.venueManager;
-  console.log("Profile Venue Manager:", profileVenueManager);
-
-  const [venueManager, setVenueManager] = useState(profileVenueManager);
-  console.log("venueManager:", venueManager);
-
-  const AuthToken = load("Holidaze_Login_Token");
-  console.log("Authenticate Token: ", AuthToken);
-
-  const updateVenueManagerUrl = ProfilesUrl + profileName;
-  console.log("Update Venue Manager Url: ", updateVenueManagerUrl);
-
+  const [venueManager, setVenueManager] = useState(VenueManager);
+  const updateVenueManagerUrl = ProfilesUrl + ProfileName;
   const navigate = useNavigate();
 
   const HandleUpdateVenueManagerForm = (e) => {
     e.preventDefault();
     let regobj = { venueManager };
-    console.log("Register Object :", regobj);
 
     async function updateVenueManager() {
       const postData = {
         method: "PUT",
         headers: {
-          Authorization: `Bearer ${AuthToken}`,
+          Authorization: `Bearer ${accessToken}`,
           "content-type": "application/json",
         },
         body: JSON.stringify(regobj),
@@ -42,16 +28,11 @@ const UpdateVenueManagerForm = () => {
 
       try {
         const response = await fetch(updateVenueManagerUrl, postData);
-        console.log("Response :", response);
-
         const result = await response.json();
-        console.log("Result :", result);
 
         if (response.ok) {
           setVenueManager(result);
-          console.log("venue manager:", venueManager);
           save("profile", result);
-          console.log(profile);
           alert(
             `${result.name} You have successfully updated your venue manager role!`
           );

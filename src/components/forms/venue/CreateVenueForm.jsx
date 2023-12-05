@@ -1,4 +1,4 @@
-import { CreateVenueUrl } from "../../constants/Url";
+import { VenuesUrl } from "../../../constants/Url";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faImage,
@@ -14,7 +14,8 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { load } from "../storage/load";
+import { accessToken } from "../../storage/profile/accessToken";
+import { ProfileName } from "../../storage/profile/profile";
 
 const CreateVenueForm = () => {
   const [createdVenue, setCreatedVenue] = useState("");
@@ -23,8 +24,8 @@ const CreateVenueForm = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [media, setMedia] = useState("");
-  const [price, setPrice] = useState(1);
-  const [maxGuests, setMaxGuests] = useState(1);
+  const [price, setPrice] = useState("");
+  const [maxGuests, setMaxGuests] = useState("");
   const [wifi, setWifi] = useState(false);
   const [parking, setParking] = useState(false);
   const [breakfast, setBreakfast] = useState(false);
@@ -32,9 +33,6 @@ const CreateVenueForm = () => {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
-
-  const fetchVenueUrl = CreateVenueUrl;
-  //console.log("fetchVenueUrl: ", fetchVenueUrl);
 
   const handleCreateVenueForm = (e) => {
     e.preventDefault();
@@ -48,40 +46,29 @@ const CreateVenueForm = () => {
 
       location: { address, city, country },
     };
-    console.log("Register Object :", regobj);
-
-    const profile = load("profile");
-    //console.log("Profile:", profile);
-
-    const AuthToken = profile.accessToken;
-    //console.log("Authenticate Token: ", AuthToken);
 
     async function createVenue() {
       const postData = {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${AuthToken}`,
+          Authorization: `Bearer ${accessToken}`,
           "content-type": "application/json",
         },
         body: JSON.stringify(regobj),
       };
 
       try {
-        const response = await fetch(fetchVenueUrl, postData);
-        console.log("Response :", response);
-
+        const response = await fetch(VenuesUrl, postData);
         const result = await response.json();
-        console.log("Result:", result.errors);
 
         if (response.ok) {
           setCreatedVenue(result);
-          console.log("Result Errors:", result);
           alert(
-            `${profile.name} You have successfully created your venue ${result.name}!`
+            `${ProfileName} You have successfully created your venue ${result.name}!`
           );
           window.location.reload(true);
         } else {
-          alert("Error! Login failed!");
+          alert("Error! You failed to create the venue!");
         }
       } catch (error) {
         console.log("Catch Error Register: ", error);
@@ -98,7 +85,7 @@ const CreateVenueForm = () => {
           {/*---- Venue Name Input ----*/}
           <div className="input-div">
             <div className="label-div">
-              <FontAwesomeIcon icon={faUser} className="create_venue_icon" />
+              <FontAwesomeIcon icon={faUser} />
               <label htmlFor="name">venue name</label>
             </div>
             <input
@@ -107,13 +94,16 @@ const CreateVenueForm = () => {
               placeholder="Type a venue title"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required
+              className="input_required"
             />
+            <span className="invalid-feedback">required</span>
           </div>
 
           {/*---- Media Input ----*/}
           <div className="input-div">
             <div className="label-div">
-              <FontAwesomeIcon icon={faImage} className="create_venue_icon" />
+              <FontAwesomeIcon icon={faImage} />
               <label htmlFor="media">media</label>
             </div>
             <input
@@ -128,38 +118,41 @@ const CreateVenueForm = () => {
           {/*---- Price Input ----*/}
           <div className="input-div">
             <div className="label-div">
-              <FontAwesomeIcon
-                icon={faMoneyBill1}
-                className="create_venue_icon"
-              />
+              <FontAwesomeIcon icon={faMoneyBill1} />
               <label htmlFor="price">price</label>
             </div>
             <input
               type="number"
               id="price"
+              placeholder="Set a price"
               value={price}
               onChange={(e) => setPrice(Number(e.target.value))}
+              required
             />
+            <span className="input_error"></span>
           </div>
 
           {/*---- Max Guests Input ----*/}
           <div className="input-div">
             <div className="label-div">
-              <FontAwesomeIcon icon={faUsers} className="create_venue_icon" />
+              <FontAwesomeIcon icon={faUsers} />
               <label htmlFor="maxGuests">max guests</label>
             </div>
             <input
               type="number"
               id="maxGuests"
+              placeholder="Choose amount of guests"
               value={maxGuests}
               onChange={(e) => setMaxGuests(Number(e.target.value))}
+              required
             />
+            <span className="input_error"></span>
           </div>
 
           {/*---- Description Input ----*/}
           <div className="input-div">
             <div className="label-div">
-              <FontAwesomeIcon icon={faUser} className="create_venue_icon" />
+              <FontAwesomeIcon icon={faUser} />
               <label htmlFor="description">Venue description</label>
             </div>
             <input
@@ -168,7 +161,9 @@ const CreateVenueForm = () => {
               placeholder="Type a venue title"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              required
             />
+            <span className="input_error"></span>
           </div>
         </div>
 
@@ -178,7 +173,7 @@ const CreateVenueForm = () => {
           {/*---- Check Breakfast Included ----*/}
           <div className="form-check input-div">
             <div className="label-div">
-              <FontAwesomeIcon icon={faCutlery} className="create_venue_icon" />
+              <FontAwesomeIcon icon={faCutlery} />
               <label className="form-check-label" htmlFor="breakfast">
                 breakfast
               </label>
@@ -196,7 +191,7 @@ const CreateVenueForm = () => {
           {/*---- Check Pets Included ----*/}
           <div className="form-check input-div">
             <div className="label-div">
-              <FontAwesomeIcon icon={faPaw} className="create_venue_icon" />
+              <FontAwesomeIcon icon={faPaw} />
               <label className="form-check-label" htmlFor="pets">
                 pets
               </label>
@@ -214,7 +209,7 @@ const CreateVenueForm = () => {
           {/*---- Check parking Included ----*/}
           <div className="form-check input-div">
             <div className="label-div">
-              <FontAwesomeIcon icon={faCar} className="create_venue_icon" />
+              <FontAwesomeIcon icon={faCar} />
               <label className="form-check-label" htmlFor="parking">
                 parking
               </label>
@@ -232,7 +227,7 @@ const CreateVenueForm = () => {
           {/*---- Check Wifi Included ----*/}
           <div className="form-check input-div">
             <div className="label-div">
-              <FontAwesomeIcon icon={faCutlery} className="create_venue_icon" />
+              <FontAwesomeIcon icon={faCutlery} />
               <label className="form-check-label" htmlFor="wifi">
                 wifi
               </label>
@@ -254,7 +249,7 @@ const CreateVenueForm = () => {
           {/*---- Address Input ----*/}
           <div className="input-div">
             <div className="label-div">
-              <FontAwesomeIcon icon={faHouse} className="create_venue_icon" />
+              <FontAwesomeIcon icon={faHouse} />
               <label htmlFor="address">address</label>
             </div>
             <input
@@ -269,7 +264,7 @@ const CreateVenueForm = () => {
           {/*---- City Input ----*/}
           <div className="input-div">
             <div className="label-div">
-              <FontAwesomeIcon icon={faCity} className="create_venue_icon" />
+              <FontAwesomeIcon icon={faCity} />
               <label htmlFor="city">city</label>
             </div>
             <input
@@ -284,7 +279,7 @@ const CreateVenueForm = () => {
           {/*---- Country Input ----*/}
           <div className="input-div">
             <div className="label-div">
-              <FontAwesomeIcon icon={faUsers} className="create_venue_icon" />
+              <FontAwesomeIcon icon={faUsers} />
               <label htmlFor="country">country</label>
             </div>
             <input

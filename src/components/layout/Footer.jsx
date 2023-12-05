@@ -10,14 +10,14 @@ const Footer = () => {
     <footer className="fixed-bottom">
       <img
         src="../../../public/assets/holidaze_logo_transparent_whitegems.png"
-        alt=""
+        alt="Holidaze Logo. The letter H with a tiara on top, all in pink on a white background."
       />
       <div className="social_media_icons">
         <FontAwesomeIcon icon={faSquareFacebook} className="footer_icon" />
         <FontAwesomeIcon icon={faInstagram} className="footer_icon" />
         <FontAwesomeIcon icon={faTwitter} className="footer_icon" />
       </div>
-      <p>@Copyright Holidaze 2023</p>
+      <p>&copy;2023 Holidaze</p>
     </footer>
   );
 };

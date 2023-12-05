@@ -45,6 +45,20 @@ form .button_green {
   font-size: 2rem;
 }
 
+.input_error {
+  display: block;
+  visibility: hidden;
+  color: var(--invalid);
+}
+
+.input_required:not(:focus):invalid {
+  border: 2px solid var(--invalid);
+}
+
+.input_required:not(:focus):invalid ~ .input_error {
+  visibility: visible;
+}
+
 @media (max-height: 768px) {
   .label-div {
     flex-direction: column;

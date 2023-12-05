@@ -1,4 +1,4 @@
-import RegisterForm from "../forms/RegisterForm";
+import RegisterForm from "../../forms/auth/RegisterForm";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";

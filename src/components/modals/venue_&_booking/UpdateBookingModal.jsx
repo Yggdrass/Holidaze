@@ -1,5 +1,7 @@
 import { useState } from "react";
-import UpdateBookingForm from "../forms/UpdateBookingForm";
+import UpdateBookingForm from "../../forms/booking/UpdateBookingForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 const UpdateBookingModal = () => {
   const [updateBookingModal, setUpdateBookingModal] = useState(false);
@@ -24,9 +26,15 @@ const UpdateBookingModal = () => {
       {updateBookingModal && (
         <div className="modal">
           <div className="overlay" onClick={toggleUpdateBookingModal}></div>
-          <div className="modal-content">
+          <div className="modal_content_updateBooking">
             <h1 className="h1_modal_title">update booking at this event</h1>
             <UpdateBookingForm />
+            <button
+              className="close_modal_button button_purple"
+              onClick={toggleUpdateBookingModal}
+            >
+              <FontAwesomeIcon icon={faX} />
+            </button>
           </div>
         </div>
       )}

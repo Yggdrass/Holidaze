@@ -1,40 +1,31 @@
 import { useState } from "react";
-import { BookingsUrl } from "../../components/auth/constants/Url";
-import { load } from "../../components/storage/load";
+import { BookingsUrl } from "../../../constants/Url";
+import { load } from "../../storage/load";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faUsers } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { ProfileName } from "../../storage/profile/profile";
 
-const CreateBookingForm = () => {
+const UpdateBookingForm = () => {
   const [dateFrom, setDateFrom] = useState("");
-  console.log("Date From", dateFrom);
   const [dateTo, setDateTo] = useState("");
-  console.log("Date To", dateTo);
   const [guests, setGuests] = useState(1);
-  console.log("Guests", guests);
   const venue = load("venue_details");
-  console.log("venue", venue);
   const venueId = venue.id;
-  console.log("venueId: ", venueId);
   const venueMaxGuests = venue.maxGuests;
-  console.log("Venue Max Guests:", venueMaxGuests);
-  const createBookingUrl = BookingsUrl;
-  console.log("createBookingUrl", createBookingUrl);
+  const params = useParams();
+  const updateBookingUrl = BookingsUrl + params.id;
   const profile = load("profile");
-  console.log("Profile:", profile);
   const AuthToken = profile.accessToken;
-  console.log("Authenticate Token: ", AuthToken);
   const navigate = useNavigate();
 
-  const handleSubmitBookingForm = (e) => {
+  const handleUpdateBookingForm = (e) => {
     e.preventDefault();
-
     let regobj = { dateFrom, dateTo, guests, venueId };
-    console.log("Register Object Booking:", regobj);
 
-    async function registerBooking() {
-      const postData = {
-        method: "POST",
+    async function updateBooking() {
+      const fetchOptions = {
+        method: "PUT",
         headers: {
           Authorization: `Bearer ${AuthToken}`,
           "content-type": "application/json",
@@ -43,31 +34,27 @@ const CreateBookingForm = () => {
       };
 
       try {
-        const response = await fetch(createBookingUrl, postData);
-        console.log("Response :", response);
-
+        const response = await fetch(updateBookingUrl, fetchOptions);
         const result = await response.json();
         console.log("Result :", JSON.stringify(result));
 
         if (response.ok) {
-          alert(
-            `${profile.name} You have successfully created a booking on this venue!`
-          );
+          alert(`${ProfileName} You have successfully updated this booking!`);
           navigate(`/profile`);
           window.location.reload(true);
         } else if (guests > venueMaxGuests) {
           alert("Error! booking failed! Exceeded max guests allowed");
         }
       } catch (error) {
-        console.log("Catch Error Register Booking: ", error);
+        console.log("Catch Error Update Booking: ", error);
       }
     }
-    registerBooking();
+    updateBooking();
   };
 
   return (
     <div>
-      <form action="" className="form" onSubmit={handleSubmitBookingForm}>
+      <form action="" className="form" onSubmit={handleUpdateBookingForm}>
         {/*---- Date Input ----*/}
         <div className="input-div">
           <div className="label-div">
@@ -105,11 +92,11 @@ const CreateBookingForm = () => {
         </div>
 
         <button type="submit" className="button_green register_form_submit">
-          register booking
+          update booking
         </button>
       </form>
     </div>
   );
 };
 
-export default CreateBookingForm;
+export default UpdateBookingForm;

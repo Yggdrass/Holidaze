@@ -1,30 +1,19 @@
-import { load } from "../storage/load";
 import { useNavigate, useParams } from "react-router-dom";
 import { Venues_Details_Url } from "../../constants/Url";
+import { accessToken } from "../storage/profile/accessToken";
+import { ProfileName } from "../storage/profile/profile";
 
 const DeleteVenue = () => {
-  const profile = load("profile");
-  //console.log("Profile delete: ", profile);
-
-  const AuthToken = profile.accessToken;
-  //console.log("Auth Token delete: ", AuthToken);
-
   const params = useParams();
-  //console.log("Params delete: ", params);
-
   const VenuesUrl = Venues_Details_Url;
-  //console.log("Venues Url delete: ", VenuesUrl);
-
   const DeleteVenueUrl = VenuesUrl + params.id;
-  //console.log("Delete Venue Url: ", DeleteVenueUrl);
-
   const navigate = useNavigate();
 
   async function deleteRequest() {
     const deleteOptions = {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${AuthToken}`,
+        Authorization: `Bearer ${accessToken}`,
         "content-type": "application/json",
       },
     };
@@ -35,11 +24,11 @@ const DeleteVenue = () => {
 
       if (response.ok) {
         console.log("Result Success delete:", response);
-        alert(`${profile.name} You have successfully deleted this venue!`);
+        alert(`${ProfileName} You have successfully deleted this venue!`);
         navigate(`/profile`);
         window.location.reload(true);
       } else {
-        console.log("Response Result Error delete");
+        console.log("Response Error DeleteRequest: ", response);
       }
     } catch (error) {
       console.log("Catch Error Register delete: ", error);

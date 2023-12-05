@@ -4,15 +4,9 @@ import { load } from "../storage/load";
 
 const DeleteBooking = () => {
   const profile = load("profile");
-  //console.log("Profile delete: ", profile);
-
   const AuthToken = profile.accessToken;
-  //console.log("Auth Token delete: ", AuthToken);
-
   const params = useParams();
-  console.log("Params: ", params);
   const deleteBookingUrl = BookingsUrl + params.id;
-  console.log("deleteBookingUrl", deleteBookingUrl);
 
   const navigate = useNavigate();
 
@@ -27,15 +21,13 @@ const DeleteBooking = () => {
 
     try {
       const response = await fetch(deleteBookingUrl, deleteOptions);
-      console.log("Response :", response);
 
       if (response.ok) {
-        console.log("Result Success delete:", response);
         alert(`${profile.name} You have successfully deleted this booking!`);
         navigate(`/profile`);
         window.location.reload(true);
       } else {
-        console.log("Response Result Error delete");
+        console.log("Response Result Error delete", response);
       }
     } catch (error) {
       console.log("Catch Error Register delete: ", error);

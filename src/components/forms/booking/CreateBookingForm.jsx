@@ -1,73 +1,60 @@
 import { useState } from "react";
-import { BookingsUrl } from "../../constants/Url";
-import { load } from "../storage/load";
+import { BookingsUrl } from "../../../constants/Url";
+import { load } from "../../storage/load";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faUsers } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { accessToken } from "../../storage/profile/accessToken";
+import { ProfileName } from "../../storage/profile/profile";
 
-const UpdateBookingForm = () => {
+const CreateBookingForm = () => {
   const [dateFrom, setDateFrom] = useState("");
-  console.log("Date From", dateFrom);
   const [dateTo, setDateTo] = useState("");
-  console.log("Date To", dateTo);
   const [guests, setGuests] = useState(1);
-  console.log("Guests", guests);
   const venue = load("venue_details");
-  console.log("venue", venue);
   const venueId = venue.id;
-  console.log("venueId: ", venueId);
   const venueMaxGuests = venue.maxGuests;
-  console.log("Venue Max Guests:", venueMaxGuests);
-  const params = useParams();
-  console.log("Params: ", params);
-  const updateBookingUrl = BookingsUrl + params.id;
-  console.log("updateBookingUrl", updateBookingUrl);
-  const profile = load("profile");
-  console.log("Profile:", profile);
-  const AuthToken = profile.accessToken;
-  console.log("Authenticate Token: ", AuthToken);
   const navigate = useNavigate();
 
-  const handleUpdateBookingForm = (e) => {
+  const handleSubmitBookingForm = (e) => {
     e.preventDefault();
 
     let regobj = { dateFrom, dateTo, guests, venueId };
-    console.log("Register Object Booking:", regobj);
 
-    async function updateBooking() {
-      const fetchOptions = {
-        method: "PUT",
+    async function registerBooking() {
+      const postData = {
+        method: "POST",
         headers: {
-          Authorization: `Bearer ${AuthToken}`,
+          Authorization: `Bearer ${accessToken}`,
           "content-type": "application/json",
         },
         body: JSON.stringify(regobj),
       };
 
       try {
-        const response = await fetch(updateBookingUrl, fetchOptions);
-        console.log("Response :", response);
-
+        const response = await fetch(BookingsUrl, postData);
         const result = await response.json();
         console.log("Result :", JSON.stringify(result));
 
         if (response.ok) {
-          alert(`${profile.name} You have successfully updated this booking!`);
+          alert(
+            `${ProfileName} You have successfully created a booking on this venue!`
+          );
           navigate(`/profile`);
           window.location.reload(true);
         } else if (guests > venueMaxGuests) {
           alert("Error! booking failed! Exceeded max guests allowed");
         }
       } catch (error) {
-        console.log("Catch Error Update Booking: ", error);
+        console.log("Catch Error Register Booking: ", error);
       }
     }
-    updateBooking();
+    registerBooking();
   };
 
   return (
     <div>
-      <form action="" className="form" onSubmit={handleUpdateBookingForm}>
+      <form action="" className="form" onSubmit={handleSubmitBookingForm}>
         {/*---- Date Input ----*/}
         <div className="input-div">
           <div className="label-div">
@@ -81,6 +68,7 @@ const UpdateBookingForm = () => {
             value={dateFrom}
             onChange={(e) => setDateFrom(e.target.value)}
           />
+          <span className="input_error"></span>
           <input
             type="date"
             id="date"
@@ -88,6 +76,7 @@ const UpdateBookingForm = () => {
             value={dateTo}
             onChange={(e) => setDateTo(e.target.value)}
           />
+          <span className="input_error"></span>
         </div>
 
         {/*---- Guests Input ----*/}
@@ -102,14 +91,15 @@ const UpdateBookingForm = () => {
             value={guests}
             onChange={(e) => setGuests(Number(e.target.value))}
           />
+          <span className="input_error"></span>
         </div>
 
         <button type="submit" className="button_green register_form_submit">
-          update booking
+          register booking
         </button>
       </form>
     </div>
   );
 };
 
-export default UpdateBookingForm;
+export default CreateBookingForm;

@@ -1,35 +1,30 @@
-import { load } from "../../components/storage/load";
 import "./Profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUser } from "@fortawesome/free-regular-svg-icons";
-import UpdateAvatarModal from "../../components/modals/UpdateAvatarModal";
-import UpdateVenueManagerModal from "../../components/modals/UpdateVenueManagerModal";
-import CreateVenueModal from "../../components/modals/CreateVenueModal";
+import UpdateAvatarModal from "../../components/modals/auth_&_profile/UpdateAvatarModal";
+import UpdateVenueManagerModal from "../../components/modals/auth_&_profile/UpdateVenueManagerModal";
+import CreateVenueModal from "../../components/modals/venue_&_booking/CreateVenueModal";
 import VenuesByProfile from "../../components/VenuesByProfile";
 import MyBookings from "../../components/booking/MyBookings";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
+import {
+  ProfileAvatar,
+  ProfileEmail,
+  ProfileName,
+  VenueManager,
+} from "../../components/storage/profile/profile";
+import { accessToken } from "../../components/storage/profile/accessToken";
 
 const ProfilePage = () => {
-  const profile = load("profile");
-  //console.log("Profile:", profile);
-  const profileName = profile.name;
-  //console.log("Profile Name:", profileName);
-
-  const profileAvatar = profile.avatar;
-  //console.log("Profile Avatar:", profileAvatar);
-
-  const profileEmail = profile.email;
-  //console.log("Profile Email:", profileEmail);
-
-  const venueManager = profile.venueManager;
-  //console.log("Venue Manager Role:", venueManager);
+  console.log("auth token: ", accessToken);
+  console.log("profile name: ", ProfileName);
 
   const Heading = () => {
-    return <h1 className="profilePageHeader">{profileName}s page</h1>;
+    return <h1 className="profilePageHeader">{ProfileName}s page</h1>;
   };
 
   const Avatar = () => {
-    return <img src={profileAvatar} alt="Your avatar" className="avatar" />;
+    return <img src={ProfileAvatar} alt="Your avatar" className="avatar" />;
   };
 
   const ProfileInfo = () => {
@@ -37,16 +32,16 @@ const ProfilePage = () => {
       <div className="profile_info">
         <div className="info_block">
           <FontAwesomeIcon icon={faUser} />
-          <p className="info_block_text">{profileName}</p>
+          <p className="info_block_text">{ProfileName}</p>
         </div>
         <div className="info_block">
           <FontAwesomeIcon icon={faEnvelope} />
-          <p className="info_block_text">{profileEmail}</p>
+          <p className="info_block_text">{ProfileEmail}</p>
         </div>
         <div className="info_block">
           <FontAwesomeIcon icon={faUserTie} />
           <p className="info_block_text">
-            {venueManager ? "is a venue manager" : "is not a venue manager"}
+            {VenueManager ? "is a venue manager" : "is not a venue manager"}
           </p>
         </div>
       </div>
@@ -63,9 +58,9 @@ const ProfilePage = () => {
       <div className="update_profile_buttons_container">
         <UpdateAvatarModal />
         <UpdateVenueManagerModal />
-        {venueManager ? <CreateVenueModal /> : null}
+        {VenueManager ? <CreateVenueModal /> : null}
       </div>
-      {venueManager ? <VenuesByProfile /> : null}
+      {VenueManager ? <VenuesByProfile /> : null}
       <MyBookings />
     </main>
   );

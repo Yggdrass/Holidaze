@@ -5,13 +5,8 @@ import "./Booking.css";
 
 const BookingDetails = () => {
   const booking = load("booking_details");
-  console.log("booking: ", booking);
-
   const bookingCustomer = booking.customer;
-  console.log("Booking Customer: ", bookingCustomer);
-
   const bookingVenue = booking.venue;
-  console.log("Booking Venue: ", bookingVenue);
 
   return (
     <div className="booking_details_container">

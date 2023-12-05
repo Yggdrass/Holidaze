@@ -2,12 +2,14 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
   text-align: center;
-  --white: #fff;
-  --black: #000;
-  --pink: #ff8ec7;
-  --pink_overlay: #ff8ec7b4;
-  --purple: #a66af5;
-  --green: #75f491;
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
+  --pink: rgb(255, 143, 199);
+  --pink_overlay: rgba(255, 143, 199, 0.706);
+  --purple: rgb(167, 107, 245)
+  --green: rgb(117, 245, 145);
+  --invalid: rgb(255, 0, 0);
+  --valid: rgb(1, 172, 1);
 }
 
 html {
@@ -20,7 +22,7 @@ body {
   margin: 0 auto;
   display: flex;
   max-width: 100%;
-  max-height: 100%;
+  min-height: 100vh;
   flex-direction: column;
 }
 

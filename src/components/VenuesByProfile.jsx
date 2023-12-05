@@ -1,43 +1,30 @@
 import { useEffect, useState } from "react";
 import { ProfilesUrl } from "../constants/Url";
-import { load } from "./storage/load";
 import MyVenueCard from "./cards/MyVenueCard";
+import { accessToken } from "./storage/profile/accessToken";
+import { ProfileName } from "./storage/profile/profile";
 
 const VenuesByProfile = () => {
   const [profileVenues, setProfileVenues] = useState("");
-  console.log("Profile Venues: ", profileVenues);
+  const fetchVenuesByProfileUrl = ProfilesUrl + ProfileName + "/venues";
 
-  const url = ProfilesUrl;
-
-  const profile = load("profile");
-
-  const profileName = profile.name;
-
-  const AuthToken = profile.accessToken;
-
-  const fetchVenuesByProfileUrl = url + profileName + "/venues";
-
-  async function fetchVenues() {
+  async function fetchProfileVenues() {
     const postData = {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${AuthToken}`,
+        Authorization: `Bearer ${accessToken}`,
         "content-type": "application/json",
       },
     };
 
     try {
       const response = await fetch(fetchVenuesByProfileUrl, postData);
-      //console.log("Response :", response);
-
       const result = await response.json();
-      //console.log("Result:", result.errors);
 
       if (response.ok) {
         setProfileVenues(result);
-        //console.log("Result Success:", result);
       } else {
-        console.log("Result Error:");
+        console.log("Result Error:", result);
       }
     } catch (error) {
       console.log("Catch Error Register: ", error);
@@ -45,7 +32,7 @@ const VenuesByProfile = () => {
   }
 
   useEffect(() => {
-    fetchVenues();
+    fetchProfileVenues();
   }, []);
 
   return (
@@ -53,12 +40,20 @@ const VenuesByProfile = () => {
       <h2 className="myVenues_header">my venues</h2>
       {profileVenues.length > 0 ? (
         <ul className="myVenues_container">
-          {profileVenues.map((item) => (
-            <MyVenueCard key={item.id} item={item} />
+          {profileVenues.map((venue) => (
+            <MyVenueCard
+              key={venue.id}
+              item={venue}
+              venueId={venue.id}
+              venuePrice={venue.price}
+              venueName={venue.name}
+              venueDescription={venue.description}
+              venueMedia={venue.media}
+            />
           ))}
         </ul>
       ) : (
-        "You don't have any create venues!"
+        "You don't have any created venues!"
       )}
     </div>
   );
