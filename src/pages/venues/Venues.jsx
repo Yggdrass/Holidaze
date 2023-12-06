@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import VenueCard from "../../components/cards/VenueCard";
 import { useEffect, useState } from "react";
 import { VenuesUrl } from "../../constants/Url";
+import "./Venues.modules.css";
 
 const Venues = () => {
   const [venues, setVenues] = useState([]);

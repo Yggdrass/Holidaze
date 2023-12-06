@@ -128,8 +128,9 @@ const CreateVenueForm = () => {
               value={price}
               onChange={(e) => setPrice(Number(e.target.value))}
               required
+              className="input_required"
             />
-            <span className="input_error"></span>
+            <span className="input_error">required</span>
           </div>
 
           {/*---- Max Guests Input ----*/}
@@ -145,8 +146,9 @@ const CreateVenueForm = () => {
               value={maxGuests}
               onChange={(e) => setMaxGuests(Number(e.target.value))}
               required
+              className="input_required"
             />
-            <span className="input_error"></span>
+            <span className="input_error">required</span>
           </div>
 
           {/*---- Description Input ----*/}
@@ -162,8 +164,9 @@ const CreateVenueForm = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
+              className="input_required"
             />
-            <span className="input_error"></span>
+            <span className="input_error">Required</span>
           </div>
         </div>
 

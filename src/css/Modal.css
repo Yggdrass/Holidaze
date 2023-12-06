@@ -43,7 +43,6 @@ body.active-modal {
 .modal_content_updateAvatar,
 .modal_content_updateVenueManager,
 .modal_content_createVenue,
-.modal_content_updateBooking,
 .modal_content_createBooking,
 .modal_content_updateVenue {
   position: absolute;
@@ -53,6 +52,17 @@ body.active-modal {
   background-color: var(--white);
   min-width: 10em;
   padding: 2em 5em 6em 5em;
+}
+
+.modal_content_updateBooking {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  max-width: 30em;
+  min-width: 10em;
+  padding: 5em 0;
 }
 
 .modal_content_register {
@@ -70,7 +80,6 @@ body.active-modal {
 @media (max-width: 475px), (orientation: portrait) {
   .form {
     min-width: 1em;
-    padding: 0 6em;
   }
 }
 
@@ -79,14 +88,28 @@ body.active-modal {
     font-size: min(2rem, 2vw + 1, 5rem);
   }
 
+  .input-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0;
+  }
+
   input {
     font-size: min(2rem, 2vw + 1, 5rem);
+    align-self: center;
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 768px), (orientation: landscape) {
-  .modal_content_login {
+  .modal_content_updateAvatar,
+  .modal_content_updateVenueManager,
+  .modal_content_createVenue,
+  .modal_content_createBooking,
+  .modal_content_updateVenue {
     margin-top: 12em;
+    max-width: 20em;
   }
   .modal_content_register {
     margin-top: 35em;
@@ -95,7 +118,11 @@ body.active-modal {
 }
 
 @media (max-width: 1080px), (orientation: portrait) {
-  div .modal_content_login {
+  .modal_content_updateAvatar,
+  .modal_content_updateVenueManager,
+  .modal_content_createVenue,
+  .modal_content_createBooking,
+  .modal_content_updateVenue {
     margin-top: 10em;
     min-width: 20em;
     padding: 2em;
@@ -110,7 +137,11 @@ body.active-modal {
 }
 
 @media (max-width: 2560px) {
-  div .modal_content_login {
+  .modal_content_updateAvatar,
+  .modal_content_updateVenueManager,
+  .modal_content_createVenue,
+  .modal_content_createBooking,
+  .modal_content_updateVenue {
     top: 15em;
     min-width: 20em;
     padding: 2em;

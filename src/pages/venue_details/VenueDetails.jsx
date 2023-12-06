@@ -21,16 +21,8 @@ const VenueDetails = () => {
   const paramsId = params.id;
 
   const [venueOwner, setVenueOwner] = useState([]);
-  console.log("venueOwner: ", venueOwner);
-
   const [venueBookings, setVenueBookings] = useState([]);
-  console.log("venueBookings: ", venueBookings);
-
   const venueOwnerEmail = venueOwner.email;
-  console.log("venue owner Email:", venueOwnerEmail);
-
-  console.log("venue media:", venue.media);
-
   const DateFrom = venueBookings.map((booking) =>
     booking.dateFrom.slice(0, 10)
   );

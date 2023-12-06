@@ -46,7 +46,6 @@ body.active-modal {
 @media (max-width: 475px), (orientation: portrait) {
   .form {
     min-width: 1em;
-    padding: 0 6em;
   }
 }
 

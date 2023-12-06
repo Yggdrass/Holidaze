@@ -1,10 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { BookingsUrl } from "../../constants/Url";
-import { load } from "../../storage/load";
+import { accessToken } from "../../storage/profile/accessToken";
+import { ProfileName } from "../../storage/profile/profile";
 
 const DeleteBooking = () => {
-  const profile = load("profile");
-  const AuthToken = profile.accessToken;
   const params = useParams();
   const deleteBookingUrl = BookingsUrl + params.id;
 
@@ -14,7 +13,7 @@ const DeleteBooking = () => {
     const deleteOptions = {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${AuthToken}`,
+        Authorization: `Bearer ${accessToken}`,
         "content-type": "application/json",
       },
     };
@@ -23,7 +22,7 @@ const DeleteBooking = () => {
       const response = await fetch(deleteBookingUrl, deleteOptions);
 
       if (response.ok) {
-        alert(`${profile.name} You have successfully deleted this booking!`);
+        alert(`${ProfileName} You have successfully deleted this booking!`);
         navigate(`/profile`);
         window.location.reload(true);
       } else {

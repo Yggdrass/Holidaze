@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useParams } from "react-router-dom";
 import { ProfileName } from "../../../storage/profile/profile";
+import { accessToken } from "../../../storage/profile/accessToken";
 
 const UpdateBookingForm = () => {
   const [dateFrom, setDateFrom] = useState("");
@@ -15,8 +16,6 @@ const UpdateBookingForm = () => {
   const venueMaxGuests = venue.maxGuests;
   const params = useParams();
   const updateBookingUrl = BookingsUrl + params.id;
-  const profile = load("profile");
-  const AuthToken = profile.accessToken;
   const navigate = useNavigate();
 
   const handleUpdateBookingForm = (e) => {
@@ -27,7 +26,7 @@ const UpdateBookingForm = () => {
       const fetchOptions = {
         method: "PUT",
         headers: {
-          Authorization: `Bearer ${AuthToken}`,
+          Authorization: `Bearer ${accessToken}`,
           "content-type": "application/json",
         },
         body: JSON.stringify(regobj),

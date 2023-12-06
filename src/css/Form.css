@@ -70,11 +70,11 @@ form .button_green {
 
   input {
     max-width: 75%;
-    margin: 0 2rem;
   }
 
   .form {
     display: flex;
     gap: 3rem;
+    padding: 0;
   }
 }
