@@ -4,8 +4,6 @@ import { load } from "../../../storage/load";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { accessToken } from "../../../storage/profile/accessToken";
-import { ProfileName } from "../../../storage/profile/profile";
 
 const CreateBookingForm = () => {
   const [dateFrom, setDateFrom] = useState("");
@@ -15,6 +13,10 @@ const CreateBookingForm = () => {
   const venueId = venue.id;
   const venueMaxGuests = venue.maxGuests;
   const navigate = useNavigate();
+
+  const profile = load("profile");
+  const accessToken = profile.accessToken;
+  const ProfileName = profile.name;
 
   const handleSubmitBookingForm = (e) => {
     e.preventDefault();

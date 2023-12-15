@@ -4,11 +4,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProfilesUrl } from "../../../constants/Url";
 import { save } from "../../../storage/save";
-import { ProfileName } from "../../../storage/profile/profile";
-import { accessToken } from "../../../storage/profile/accessToken";
 
 const UpdateAvatarForm = () => {
   const [avatar, setAvatar] = useState("");
+  const profile = load("profile");
+  const accessToken = profile.accessToken;
+  const ProfileName = profile.name;
   const updateAvatarUrl = ProfilesUrl + ProfileName + "/media";
   const navigate = useNavigate();
 

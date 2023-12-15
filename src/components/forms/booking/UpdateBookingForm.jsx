@@ -4,8 +4,6 @@ import { load } from "../../../storage/load";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useParams } from "react-router-dom";
-import { ProfileName } from "../../../storage/profile/profile";
-import { accessToken } from "../../../storage/profile/accessToken";
 
 const UpdateBookingForm = () => {
   const [dateFrom, setDateFrom] = useState("");
@@ -17,6 +15,10 @@ const UpdateBookingForm = () => {
   const params = useParams();
   const updateBookingUrl = BookingsUrl + params.id;
   const navigate = useNavigate();
+
+  const profile = load("profile");
+  const accessToken = profile.accessToken;
+  const ProfileName = profile.name;
 
   const handleUpdateBookingForm = (e) => {
     e.preventDefault();

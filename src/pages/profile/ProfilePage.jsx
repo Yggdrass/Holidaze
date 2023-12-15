@@ -7,17 +7,13 @@ import CreateVenueModal from "../../components/modals/venue_&_booking/CreateVenu
 import VenuesByProfile from "../../components/VenuesByProfile";
 import MyBookings from "../../components/booking/MyBookings";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
-import {
-  ProfileAvatar,
-  ProfileEmail,
-  ProfileName,
-  VenueManager,
-} from "../../storage/profile/profile";
-import { accessToken } from "../../storage/profile/accessToken";
 
 const ProfilePage = () => {
-  console.log("auth token: ", accessToken);
-  console.log("profile name: ", ProfileName);
+  const profile = load("profile");
+  const ProfileEmail = profile.email;
+  const ProfileName = profile.name;
+  const ProfileAvatar = profile.avatar;
+  const VenueManager = profile.venueManager;
 
   const Heading = () => {
     return <h1 className="profilePageHeader">{ProfileName}s page</h1>;

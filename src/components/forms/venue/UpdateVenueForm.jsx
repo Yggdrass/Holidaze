@@ -15,8 +15,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { accessToken } from "../../../storage/profile/accessToken";
-import { ProfileName } from "../../../storage/profile/profile";
 
 const UpdateVenueForm = (Venue) => {
   const venue = Venue.Venue;
@@ -39,6 +37,10 @@ const UpdateVenueForm = (Venue) => {
   const venueAddress = venueLocation.address;
   const venueCity = venueLocation.city;
   const venueCountry = venueLocation.country;
+
+  const profile = load("profile");
+  const accessToken = profile.accessToken;
+  const ProfileName = profile.name;
 
   const [name, setName] = useState(venueName);
   const [description, setDescription] = useState(venueDescription);

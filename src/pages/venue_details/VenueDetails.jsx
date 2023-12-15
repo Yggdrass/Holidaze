@@ -7,18 +7,22 @@ import VenueMeta from "../../components/venue_details/VenueMeta";
 import VenueMedia from "../../components/venue_details/VenueMedia";
 import CreateBookingModal from "../../components/modals/venue_&_booking/CreateBookingModal";
 import VenueCalendar from "../../components/venue_details/VenueCalendar";
-import { accessToken } from "../../storage/profile/accessToken";
-import { ProfileEmail, VenueManager } from "../../storage/profile/profile";
 import UpdateVenueModal from "../../components/modals/venue_&_booking/UpdateVenueModal";
 import DeleteVenue from "../../components/venue_details/DeleteVenue";
 import VenueBookings from "../../components/venue_details/VenueBookings";
 import "./VenueDetails.modules.css";
+import { load } from "../../storage/load";
 
 const VenueDetails = () => {
   const [venue, setVenue] = useState([]);
   console.log("venue: ", venue);
   const params = useParams();
   const paramsId = params.id;
+
+  const profile = load("profile");
+  const ProfileEmail = profile.email;
+  const accessToken = profile.accessToken;
+  const VenueManager = profile.venueManager;
 
   const [venueOwner, setVenueOwner] = useState([]);
   const [venueBookings, setVenueBookings] = useState([]);

@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { ProfilesUrl } from "../constants/Url";
 import MyVenueCard from "./cards/MyVenueCard";
-import { accessToken } from "../storage/profile/accessToken";
-import { ProfileName } from "../storage/profile/profile";
 
 const VenuesByProfile = () => {
   const [profileVenues, setProfileVenues] = useState("");
+  const profile = load("profile");
+  const ProfileName = profile.name;
+  const accessToken = profile.accessToken;
+
   const fetchVenuesByProfileUrl = ProfilesUrl + ProfileName + "/venues";
 
   async function fetchProfileVenues() {

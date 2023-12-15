@@ -1,12 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { VenuesUrl } from "../../constants/Url";
-import { accessToken } from "../../storage/profile/accessToken";
-import { ProfileName } from "../../storage/profile/profile";
 
 const DeleteVenue = () => {
   const params = useParams();
   const DeleteVenueUrl = VenuesUrl + params.id;
   const navigate = useNavigate();
+  const profile = load("profile");
+  const accessToken = profile.accessToken;
+  const ProfileName = profile.name;
 
   async function deleteRequest() {
     const deleteOptions = {

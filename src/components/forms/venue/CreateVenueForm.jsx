@@ -14,12 +14,14 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { accessToken } from "../../../storage/profile/accessToken";
-import { ProfileName } from "../../../storage/profile/profile";
 
 const CreateVenueForm = () => {
   const [createdVenue, setCreatedVenue] = useState("");
   console.log("Created Venue from form:", createdVenue);
+
+  const profile = load("profile");
+  const accessToken = profile.accessToken;
+  const ProfileName = profile.name;
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");

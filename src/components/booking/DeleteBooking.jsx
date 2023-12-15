@@ -1,10 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { BookingsUrl } from "../../constants/Url";
-import { accessToken } from "../../storage/profile/accessToken";
-import { ProfileName } from "../../storage/profile/profile";
 
 const DeleteBooking = () => {
   const params = useParams();
+  const profile = load("profile");
+  const accessToken = profile.accessToken;
+  const ProfileName = profile.name;
   const deleteBookingUrl = BookingsUrl + params.id;
 
   const navigate = useNavigate();

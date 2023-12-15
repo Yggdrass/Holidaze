@@ -5,12 +5,14 @@ import { save } from "../../storage/save";
 import BookingDetails from "./BookingDetails";
 import UpdateBookingModal from "../modals/venue_&_booking/UpdateBookingModal";
 import DeleteBooking from "./DeleteBooking";
-import { accessToken } from "../../storage/profile/accessToken";
 
 const Booking = () => {
   const [booking, setBooking] = useState("");
   const params = useParams();
   const paramsId = params.id;
+
+  const profile = load("profile");
+  const accessToken = profile.accessToken;
 
   async function fetchBooking() {
     const FetchBookingsUrl =
