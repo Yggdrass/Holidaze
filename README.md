@@ -1,4 +1,3 @@
-# Holidaze
 
 # Holidaze
 
